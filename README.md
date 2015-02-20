@@ -16,7 +16,7 @@ CONCEPT OVERVIEW:
 TASKS:
 ------
 ----Misc:
-- State machine menus
+- State machine menus -Al, DONE
 - "Are you a boy or a girl?" different sprite based on response
 - 8 bit bitmap font
 - Optional: "What is your name?" store and use in dialogue
