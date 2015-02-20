@@ -3,6 +3,7 @@ import starling.textures.Texture;
 import starling.events.*;
 import starling.text.TextField;
 import starling.core.Starling;
+import flash.ui.*;
 
 enum ACTION
 {
@@ -22,18 +23,33 @@ class StateMachine extends Sprite
 	{
 		super();
 		x = Starling.current.stage.stageWidth/2;
-		y = 0;
 		states = st;
 		total = st.length;
-		current = total;
-		change(false);
+		current = 0;
+		while(Std.is(states[current], StateText)) ++current;
 		makeTextFields();
+		addEventListener(Event.ADDED, function()
+		{
+			addEventListener(KeyboardEvent.KEY_DOWN, function(e:KeyboardEvent)
+			{
+				switch(e.keyCode)
+				{
+					case Keyboard.ENTER: action(CONFIRM);
+					case Keyboard.ESCAPE: action(BACK);
+					case Keyboard.UP: action(UP);
+					case Keyboard.DOWN: action(DOWN);
+				}
+			});
+		});
+		addEventListener(Event.REMOVED, function()
+		{
+			removeEventListeners(KeyboardEvent.KEY_DOWN);
+		});
 	}
 
 	private function makeTextFields()
 	{
 		var yPos = 50;
-		trace(yPos);
 		for(st in states)
 		{
 			if(Std.is(st, StateButton))
@@ -87,7 +103,7 @@ class StateMachine extends Sprite
 		do
 		{
 			current += up ? -1 : 1;
-			(current + total) % total;
+			current = (current + total) % total;
 
 		}while(Std.is(states[current], StateText));
 		updateColor();

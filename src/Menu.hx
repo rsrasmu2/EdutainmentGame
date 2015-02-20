@@ -1,6 +1,4 @@
 import starling.display.Sprite;
-import starling.events.*;
-import flash.ui.*;
 import StateMachine;
 
 enum MENU_TYPE
@@ -8,10 +6,13 @@ enum MENU_TYPE
 	MAIN;
 	INSTRUCTIONS;
 	CREDITS;
+	OVERWORLD;
+	BATTLE;
 }
 
 class Menu extends Sprite
 {
+	public static var menu : Menu;
 	private var main : StateMachine;
 	private var current : StateMachine;
 	private var instr : StateMachine;
@@ -25,9 +26,10 @@ class Menu extends Sprite
 	public function new()
 	{
 		super();
+		menu = this;
 		main = new StateMachine(
 			[new StateText(200,100,"Math RPG"),
-			new StateButton("Play", function(){}),
+			new StateButton("Play", function(){setMenu(OVERWORLD);}),
 			new StateButton("Instructions", function(){setMenu(INSTRUCTIONS);}),
 			new StateButton("Credits", function(){setMenu(CREDITS);})]);
 
@@ -44,29 +46,22 @@ class Menu extends Sprite
 
 		current = main;
 		addChild(current);
-
-		addEventListener(KeyboardEvent.KEY_DOWN, function(e:KeyboardEvent)
-		{
-			switch(e.keyCode)
-			{
-				case Keyboard.ENTER: current.action(CONFIRM);
-				case Keyboard.ESCAPE: current.action(BACK);
-				case Keyboard.UP: current.action(UP);
-				case Keyboard.DOWN: current.action(DOWN);
-			}
-		});
 	}
 
-	public function setMenu(m:MENU_TYPE)
+	private function setMenu(m:MENU_TYPE)
 	{
-		removeChild(current);
+		removeChildren();
 		switch(m)
 		{
 			case MAIN: current = main;
 			case INSTRUCTIONS: current = instr;
 			case CREDITS: current = cred;
+			case OVERWORLD: addChild(new Overworld());
+			default: trace("Action has not been defined");
 		}
-		addChild(current);
+		if(m != OVERWORLD) addChild(current);
 	}
 
+	public function reset()
+	{	setMenu(MAIN);}
 }

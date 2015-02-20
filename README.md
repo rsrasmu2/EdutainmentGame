@@ -23,8 +23,8 @@ TASKS:
 - Optional: save and load files?
 
 ----Overworld:
-- player movement (WASD)
-- collision detection!
+- player movement -Al (change to WASD later, works with arrow keys currently)
+- collision detection! -Al, (Still need objects and battle triggers)
 - Graphic to show who you can fight currently (thought bubble, or '!')
 - Cannot fight people out of your rank
 - Display dialogue in box at bottom of screen
