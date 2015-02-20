@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<application xmlns="http://ns.adobe.com/air/application/3.8">
+	<id>com.RobRas.Edutainment</id>
+	<name>Edutainmunt</name>
+	<versionNumber>2015.02.20</versionNumber>
+	<filename>Edutainment</filename>
+	<initialWindow>
+		<content>edutainment.swf</content>
+		<renderMode>direct</renderMode>
+		<autoOrients>false</autoOrients>
+		<aspectRatio>landscape</aspectRatio>
+	</initialWindow>
+</application>
