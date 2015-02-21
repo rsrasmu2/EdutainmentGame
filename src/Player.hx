@@ -18,13 +18,12 @@ class Player extends TextField
 {
 	private var moving : Bool;
 	private var world : Overworld;
-	private var stageSize : UInt;
 	private var dirHeld : DIRECTION;
+	private var talking : Bool;
 
-	public function new(gs:UInt, st:Overworld)
+	public function new(st:Overworld)
 	{
-		super(gs,gs,"P","Arial",20);
-		stageSize = gs;
+		super(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"P","Arial",20);
 		world = st;
 		dirHeld = NONE;
 		moving = false;
@@ -44,6 +43,7 @@ class Player extends TextField
 				case Keyboard.LEFT: dirHeld = LEFT;
 				case Keyboard.RIGHT: dirHeld = RIGHT;
 				case Keyboard.ESCAPE: Menu.menu.reset();
+				case Keyboard.ENTER: talking = world.talkToClassmate(this);
 			}
 		});
 		addEventListener(KeyboardEvent.KEY_UP,
@@ -61,19 +61,19 @@ class Player extends TextField
 
 	private function move(d:DIRECTION)
 	{
-		if(moving) return;
+		if(moving || talking) return;
 		var xPos = x;
 		var yPos = y;
 		switch(d)
 		{
 			case UP:
-				yPos -= stageSize;
+				yPos -= Overworld.GRID_SIZE;
 			case DOWN:
-				yPos += stageSize;
+				yPos += Overworld.GRID_SIZE;
 			case LEFT:
-				xPos -= stageSize;
+				xPos -= Overworld.GRID_SIZE;
 			case RIGHT:
-				xPos += stageSize;
+				xPos += Overworld.GRID_SIZE;
 			default: return;
 		}
 		if((xPos != x || yPos != y) && world.goodSpot(xPos,yPos))
@@ -82,9 +82,8 @@ class Player extends TextField
 
 	private function tweenTo(xPos : Float, yPos : Float)
 	{
-		trace(xPos,yPos);
 		moving = true;
-		Starling.juggler.tween(this, 0.25,
+		Starling.juggler.tween(this, 0.1,
 		{
 			transition: Transitions.LINEAR,
 			x: xPos, y : yPos,
@@ -92,4 +91,7 @@ class Player extends TextField
 			{	moving = false;}
 		});
 	}
+
+	public function stopTalking()
+	{	talking = false;}
 }

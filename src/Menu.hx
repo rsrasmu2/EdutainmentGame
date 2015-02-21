@@ -53,13 +53,20 @@ class Menu extends Sprite
 		removeChildren();
 		switch(m)
 		{
-			case MAIN: current = main;
-			case INSTRUCTIONS: current = instr;
-			case CREDITS: current = cred;
-			case OVERWORLD: addChild(new Overworld());
-			default: trace("Action has not been defined");
+			case MAIN:
+				current = main;
+			case INSTRUCTIONS:
+				current = instr;
+			case CREDITS:
+				current = cred;
+			case OVERWORLD:
+				current = null;
+				addChild(new Overworld());
+			default:
+				current = null;
+				trace("Action has not been defined");
 		}
-		if(m != OVERWORLD) addChild(current);
+		if(current != null) addChild(current);
 	}
 
 	public function reset()

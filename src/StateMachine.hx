@@ -16,20 +16,22 @@ enum ACTION
 class StateMachine extends Sprite
 {
 	private var states : Array<Dynamic>;
+	private var space : UInt;
 	private var current : Int;
 	private var total : Int;
 
-	public function new(st:Array<Dynamic>)
+	public function new(st:Array<Dynamic>, sp:UInt = 100)
 	{
 		super();
 		x = Starling.current.stage.stageWidth/2;
 		states = st;
+		space = sp;
 		total = st.length;
-		current = 0;
-		while(Std.is(states[current], StateText)) ++current;
+		initCurrent();
 		makeTextFields();
-		addEventListener(Event.ADDED, function()
+		addEventListener(Event.ADDED_TO_STAGE, function()
 		{
+			initCurrent();
 			addEventListener(KeyboardEvent.KEY_DOWN, function(e:KeyboardEvent)
 			{
 				switch(e.keyCode)
@@ -41,10 +43,16 @@ class StateMachine extends Sprite
 				}
 			});
 		});
-		addEventListener(Event.REMOVED, function()
+		addEventListener(Event.REMOVED_FROM_STAGE, function()
 		{
 			removeEventListeners(KeyboardEvent.KEY_DOWN);
 		});
+	}
+
+	public function reposition()
+	{
+		removeChildren();
+		for(st in states) addChild(st);
 	}
 
 	private function makeTextFields()
@@ -52,18 +60,9 @@ class StateMachine extends Sprite
 		var yPos = 50;
 		for(st in states)
 		{
-			if(Std.is(st, StateButton))
-			{
-				st.setY(yPos);
-				st.add(this);
-				yPos += 100;
-			}
-			else
-			{
-				st.y = yPos;
-				yPos += 100;
-				addChild(st);
-			}
+			st.y = yPos;
+			yPos += space;
+			addChild(st);
 		}
 		updateColor();
 	}
@@ -75,13 +74,20 @@ class StateMachine extends Sprite
 			if(Std.is(states[i], StateText))
 				continue;
 			if(i == current)
-				states[i].setC(0xff0000);
+				states[i].fontColor = 0xff0000;
 			else
-				states[i].setC(0x000000);
+				states[i].fontColor = 0x000000;
 		}
 	}
 
-	public function action(act:ACTION)
+	private function initCurrent()
+	{
+		current = 0;
+		while(Std.is(states[current], StateText)) ++current;
+		updateColor();
+	}
+
+	private function action(act:ACTION)
 	{
 		switch(act)
 		{
@@ -117,42 +123,39 @@ class StateText extends TextField
 		super(w,h,s,"Verdana",f);
 		addEventListener(Event.ADDED, function()
 		{
-			x -= width/2;
+			x = -width/2;
 		});
 	}
 }
 
-class StateButton
+class StateButton extends Button
 {
 	private var con : Void->Void;//confirm function
 	private var bac : Void->Void;//back function
-	private var button : Button;
 
 	public function new(s:String, c:Void->Void, ?b:Void->Void)
 	{
-		button = new Button(Texture.empty(20*s.length,20),s);
+		super(Texture.empty(20*s.length,20),s);
 		con = c;
 		bac = b;
-		button.color = 0;
-		button.fontSize = 20;
-		button.addEventListener(Event.TRIGGERED, confirm);
+		color = 0;
+		fontSize = 20;
+		addEventListener(Event.TRIGGERED, confirm);
+		addEventListener(Event.ADDED, function()
+		{
+			/*
+				The trace has to be here in order for the text
+				to be centered, but I don't know why.
+			*/
+			trace(width);
+			haxe.Log.clear();
+			x = -width/2;
+		});
 	}
 
 	public function confirm()
-	{	con();}
+	{	if(con != null) con();}
 
 	public function back()
 	{	if(bac != null) bac();}
-
-	public function setY(y:Int)
-	{	button.y = y;}
-
-	public function setC(c:UInt)
-	{	button.fontColor = c;}
-
-	public function add(parent:StateMachine)
-	{
-		parent.addChild(button);
-		button.x -= button.width/2;
-	}
 }

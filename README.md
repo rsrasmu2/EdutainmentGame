@@ -24,11 +24,14 @@ TASKS:
 
 ----Overworld:
 - player movement -Al (change to WASD later, works with arrow keys currently)
-- collision detection! -Al, (Still need objects and battle triggers)
+- collision detection! -Al, DONE
+- Display dialogue in box at bottom of screen -Al, DONE 
+	(Dialogue is diplayed below the person the player is talking to)
+	
+- initiate a fight: walk up to student, press enter. Some dialogue, then go into arena!
 - Graphic to show who you can fight currently (thought bubble, or '!')
 - Cannot fight people out of your rank
-- Display dialogue in box at bottom of screen
-- initiate a fight: walk up to student, press space. Some dialogue, then go into arena!
+
 ----Arena:
 - generate math questions - NANCY
 - display math questions one at a time
