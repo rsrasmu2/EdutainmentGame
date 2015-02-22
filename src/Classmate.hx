@@ -30,7 +30,7 @@ class Classmate extends Sprite
 		state.y = Overworld.GRID_SIZE;
 		state.reposition();
 
-		text = new TextField(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"C","Arial",20);
+		text = new TextField(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"C","Fipps",20);
 		addChild(text);
 	}
 

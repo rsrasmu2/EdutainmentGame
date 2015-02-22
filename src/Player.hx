@@ -23,7 +23,7 @@ class Player extends TextField
 
 	public function new(st:Overworld)
 	{
-		super(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"P","Arial",20);
+		super(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"P","Fipps",20);
 		world = st;
 		dirHeld = NONE;
 		moving = false;

@@ -2,18 +2,18 @@ import starling.display.Sprite;
 import starling.utils.AssetManager;
 import starling.core.Starling;
 import starling.animation.Transitions;
+import starling.text.*;
 
 class Root extends Sprite {
-
-	private static var assets:AssetManager;
 
 	public function new() {
 		super();
 	}
 
 	public function start(startup:Startup) {
-		assets = new AssetManager();
-
+		var assets = new AssetManager();
+		assets.enqueue("assets/BittyFont.fnt");
+		assets.enqueue("assets/BittyFont.png");
 		assets.loadQueue(function onProgress(ratio:Float) {
 			if (ratio == 1) {
 				// fade the loading screen, start game
@@ -22,6 +22,8 @@ class Root extends Sprite {
 						startup.removeChild(startup.loadingBitmap);
 					}
 				});
+				TextField.registerBitmapFont(new BitmapFont(assets.getTexture("BittyFont.png"),
+															assets.getXml("BittyFont.fnt")),"Fipps");
 				addChild(new Menu());
 			}
 		});

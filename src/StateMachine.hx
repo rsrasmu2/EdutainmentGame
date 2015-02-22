@@ -120,7 +120,7 @@ class StateText extends TextField
 {
 	public function new(w:Int,h:Int,s:String,f:Int = 20)
 	{
-		super(w,h,s,"Verdana",f);
+		super(w,h,s,"Fipps",f);
 		addEventListener(Event.ADDED, function()
 		{
 			x = -width/2;
@@ -140,6 +140,8 @@ class StateButton extends Button
 		bac = b;
 		color = 0;
 		fontSize = 20;
+		fontName = "Fipps";
+
 		addEventListener(Event.TRIGGERED, confirm);
 		addEventListener(Event.ADDED, function()
 		{
