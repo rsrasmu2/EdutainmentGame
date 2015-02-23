@@ -46,7 +46,7 @@ class MathEngine
 		var a = ceil(random() * (top));
 		var b = ceil(random() * (top - a));
 
-		return {question : a + " plus " + b, answer : a + b};
+		return {question : a + " + " + b, answer : a + b};
 	}
 
 	private static function minus(top : UInt) : MathProblem
@@ -61,7 +61,7 @@ class MathEngine
 			while(a < b) b = ceil(random() * (top));
 		}
 
-		return {question : a + " minus " + b, answer : a - b};
+		return {question : a + " - " + b, answer : a - b};
 	}
 
 	private static function mult(top : UInt) : MathProblem
@@ -70,7 +70,7 @@ class MathEngine
 		var a = ceil(random() * (top));
 		var b = ceil(random() * top);
 
-		return {question : a + " times " + b, answer : Std.int(a * b)};
+		return {question : a + " x " + b, answer : Std.int(a * b)};
 	}
 
 	private static function divide(top : UInt) : MathProblem
@@ -82,6 +82,6 @@ class MathEngine
 		//ensure answer isn't a fraction
 		while(a % b != 0) b = ceil(random() * top);
 
-		return {question : a + " divided by " + b, answer : Std.int(a/b)};
+		return {question : a + " / " + b, answer : Std.int(a/b)};
 	}
 }
