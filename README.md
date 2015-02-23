@@ -16,24 +16,17 @@ CONCEPT OVERVIEW:
 TASKS:
 ------
 ----Misc:
-- State machine menus -Al, DONE
 - "Are you a boy or a girl?" different sprite based on response
-- 8 bit bitmap font -Cherie, DONE
 - Optional: "What is your name?" store and use in dialogue
 - Optional: save and load files?
 
 ----Overworld:
 - player movement -Al (change to WASD later, works with arrow keys currently)
-- collision detection! -Al, DONE
-- Display dialogue in box at bottom of screen -Al, DONE 
-	(Dialogue is diplayed below the person the player is talking to)
-	
 - initiate a fight: walk up to student, press enter. Some dialogue, then go into arena!
 - Graphic to show who you can fight currently (thought bubble, or '!')
 - Cannot fight people out of your rank
 
 ----Arena:
-- generate math questions - NANCY
 - display math questions one at a time
 - capture player input in text box
 - player pushes enter to submit answer
@@ -49,7 +42,7 @@ ASSETS:
 -------
 We are doing an 8-bit style!
 - classroom objects: desks...
-- overworld students -Cherie
+- overworld students - Cherie
 - classroom background
 - arena background
 - FAIL or PASS for end of fight
@@ -57,3 +50,12 @@ We are doing an 8-bit style!
 - optional: more detailed sprites in fights
 - Music - battle and overworld?
 - Fight sounds
+
+COMPLETE:
+---------
+- State machine menus - Al, DONE
+- 8 bit bitmap font - Cherie, DONE
+- collision detection! -Al, DONE
+- generate math questions - Nancy, DONE
+- Display dialogue in box at bottom of screen -Al, DONE 
+	(Dialogue is diplayed below the person the player is talking to)
