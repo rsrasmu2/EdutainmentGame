@@ -1,5 +1,7 @@
 import starling.display.*;
 import starling.core.Starling;
+import MathEngine;
+import Classmate;
 
 class Overworld extends Sprite
 {
@@ -21,6 +23,7 @@ class Overworld extends Sprite
 		quad.alpha = 0.75;
 		addChild(quad);
 
+		//grid
 		var h = 0;
 		while(h <= quad.height)
 		{
@@ -37,6 +40,8 @@ class Overworld extends Sprite
 			addChild(q);
 			r += GRID_SIZE;
 		}
+
+		//map to store all objects on overworld
 		for(i in 0...Std.int(quad.width/GRID_SIZE))
 		{
 			map[i] = new Array();
@@ -44,11 +49,24 @@ class Overworld extends Sprite
 		}
 
 		addChild(new Player(this));
-		var testMate = new Classmate("This is a test");
-		testMate.setPosition(5,5);
-		map[5][5] = 1;
-		classmates.push(testMate);
-		addChild(testMate);
+
+		//this mate doesn't battle
+		addMate(5,5,"This is a test");
+
+		//these ones does
+		addMate(10,0,"Want to battle?", PLUS, MEDIUM);
+		addMate(10,5,"Want to battle?", MINUS, MEDIUM);
+		addMate(10,10,"Want to battle?", MULTIPLY, MEDIUM);
+		addMate(10,15,"Want to battle?", DIVIDE, MEDIUM);
+	}
+
+	private function addMate(xPos: UInt, yPos : UInt, s : String, ?op:OPERATION, ?diff:DIFFICULTY)
+	{
+		var mate = (op == null || diff == null) ? new TalkMate(s) : new BattleMate(s,op,diff);
+		mate.setPosition(xPos,yPos);
+		map[xPos][yPos] = 1;
+		classmates.push(mate);
+		addChild(mate);
 	}
 
 	//check if position on grid is okay to move to

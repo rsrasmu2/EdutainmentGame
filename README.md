@@ -22,7 +22,7 @@ TASKS:
 
 ----Overworld:
 - player movement -Al (change to WASD later, works with arrow keys currently)
-- initiate a fight: walk up to student, press enter. Some dialogue, then go into arena!
+- initiate a fight: walk up to student, press enter. Some dialogue, then go into arena!, -Al (no arena yet)
 - Graphic to show who you can fight currently (thought bubble, or '!')
 - Cannot fight people out of your rank
 

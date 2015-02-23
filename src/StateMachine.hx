@@ -28,7 +28,6 @@ class StateMachine extends Sprite
 		space = sp;
 		total = st.length;
 		initCurrent();
-		makeTextFields();
 		addEventListener(Event.ADDED_TO_STAGE, function()
 		{
 			initCurrent();
@@ -42,6 +41,7 @@ class StateMachine extends Sprite
 					case Keyboard.DOWN: action(DOWN);
 				}
 			});
+			reposition();
 		});
 		addEventListener(Event.REMOVED_FROM_STAGE, function()
 		{
@@ -49,15 +49,10 @@ class StateMachine extends Sprite
 		});
 	}
 
-	public function reposition()
+	private function reposition()
 	{
 		removeChildren();
-		for(st in states) addChild(st);
-	}
-
-	private function makeTextFields()
-	{
-		var yPos = 50;
+		var yPos = Overworld.GRID_SIZE;
 		for(st in states)
 		{
 			st.y = yPos;
