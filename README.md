@@ -16,7 +16,7 @@ CONCEPT OVERVIEW:
 TASKS:
 ------
 ----Misc:
-- "Are you a boy or a girl?" different sprite based on response
+- "Are you a boy or a girl?" different sprite based on response - Nancy
 - Optional: "What is your name?" store and use in dialogue
 - Optional: save and load files?
 
@@ -43,6 +43,7 @@ ASSETS:
 We are doing an 8-bit style!
 - classroom objects: desks...
 - overworld students - Cherie
+- main character walking sprites - Nancy
 - classroom background
 - arena background
 - FAIL or PASS for end of fight
