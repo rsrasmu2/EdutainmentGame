@@ -51,18 +51,18 @@ class Overworld extends Sprite
 		addChild(new Player(this));
 
 		//this mate doesn't battle
-		addMate(5,5,"This is a test");
+		addMate(5,5,["This is a test1","This is a test2","This is a test3"]);
 
 		//these ones does
-		addMate(10,0,"Want to battle?", PLUS, MEDIUM);
-		addMate(10,5,"Want to battle?", MINUS, MEDIUM);
-		addMate(10,10,"Want to battle?", MULTIPLY, MEDIUM);
-		addMate(10,15,"Want to battle?", DIVIDE, MEDIUM);
+		addMate(10,0,["Want to battle?"], PLUS, MEDIUM);
+		addMate(10,5,["Want to battle?"], MINUS, MEDIUM);
+		addMate(10,10,["Want to battle?"], MULTIPLY, MEDIUM);
+		addMate(10,15,["Want to battle?"], DIVIDE, MEDIUM);
 	}
 
-	private function addMate(xPos: UInt, yPos : UInt, s : String, ?op:OPERATION, ?diff:DIFFICULTY)
+	private function addMate(xPos: UInt, yPos : UInt, s : Array<String>, ?op:OPERATION, ?diff:DIFFICULTY)
 	{
-		var mate = (op == null || diff == null) ? new TalkMate(s) : new BattleMate(s,op,diff);
+		var mate = (op == null || diff == null) ? new TalkMate(s) : new BattleMate(s[0],op,diff);
 		mate.setPosition(xPos,yPos);
 		map[xPos][yPos] = 1;
 		classmates.push(mate);

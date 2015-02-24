@@ -22,66 +22,82 @@ class MathEngine
 {
 	public static function generateProblem(op:OPERATION, diff:DIFFICULTY) : MathProblem
 	{
-		// choose difficulty caps
-		var top = switch(diff)
+		// ex {question : "9 - 3 = ?", answer : 6}
+		return switch(op)
+		{
+			case PLUS: plus(diff);
+			case MINUS: minus(diff);
+			case MULTIPLY: mult(diff);
+			case DIVIDE: divide(diff);
+		}
+	}
+
+	public static function rand(top : UInt) : Int
+	{
+		// generate random numbers
+		return ceil(random() * top);
+	}
+
+	private static function plus(diff : DIFFICULTY) : MathProblem
+	{
+		var t = switch(diff)
 		{
 			case EASY: 10;
 			case MEDIUM: 20;
 			case HARD: 30;
 		}
 
-		// ex {question : "9 minus 3 = ?", answer : 6}
-		return switch(op)
-		{
-			case PLUS: plus(top);
-			case MINUS: minus(top);
-			case MULTIPLY: mult(top);
-			case DIVIDE: divide(top);
-		}
-	}
-
-	private static function plus(top : UInt) : MathProblem
-	{
-		// generate random numbers
-		var a = ceil(random() * (top));
-		var b = ceil(random() * (top - a));
+		var a = rand(t);
+		var b = rand(t);
 
 		return {question : a + " + " + b, answer : a + b};
 	}
 
-	private static function minus(top : UInt) : MathProblem
+	private static function minus(diff : DIFFICULTY) : MathProblem
 	{
-		// generate random numbers
-		var a = ceil(random() * (top));
-		var b = ceil(random() * (top - a));
-
-		if (top <= 10)
+		var t = switch(diff)
 		{
-			// don't make negative numbers if the difficulty is easy.
-			while(a < b) b = ceil(random() * (top));
+			case EASY: 10;
+			case MEDIUM: 20;
+			case HARD: 30;
 		}
 
+		var a = rand(t);
+		var b = rand(t);
+
+		//for simplicity, no negatives ever (might change)
+		while(b > a) b = rand(t);
 		return {question : a + " - " + b, answer : a - b};
 	}
 
-	private static function mult(top : UInt) : MathProblem
+	private static function mult(diff : DIFFICULTY) : MathProblem
 	{
-		// generate random numbers
-		var a = ceil(random() * (top));
-		var b = ceil(random() * top);
+		var t = switch(diff)
+		{
+			case EASY: 5;
+			case MEDIUM: 8;
+			case HARD: 12;
+		}
 
+		var a = rand(t);
+		var b = rand(t);
 		return {question : a + " x " + b, answer : Std.int(a * b)};
 	}
 
-	private static function divide(top : UInt) : MathProblem
+	private static function divide(diff : DIFFICULTY) : MathProblem
 	{
-		// generate random numbers
-		var a = ceil(random() * (top));
-		var b = ceil(random() * top);
+		var t = switch(diff)
+		{
+			case EASY: 5;
+			case MEDIUM: 8;
+			case HARD: 12;
+		}
+
+		var a = rand(t);
+		var b = rand(t);
 
 		//ensure answer isn't a fraction
-		while(a % b != 0) b = ceil(random() * top);
-
+		while(a % b != 0) b = rand(t);
 		return {question : a + " / " + b, answer : Std.int(a/b)};
 	}
 }

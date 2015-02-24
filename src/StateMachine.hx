@@ -28,6 +28,8 @@ class StateMachine extends Sprite
 		space = sp;
 		total = st.length;
 		initCurrent();
+		makeBorder();
+
 		addEventListener(Event.ADDED_TO_STAGE, function()
 		{
 			initCurrent();
@@ -51,7 +53,7 @@ class StateMachine extends Sprite
 
 	private function reposition()
 	{
-		removeChildren();
+		removeChildren(1);
 		var yPos = Overworld.GRID_SIZE;
 		for(st in states)
 		{
@@ -62,11 +64,24 @@ class StateMachine extends Sprite
 		updateColor();
 	}
 
+	private function makeBorder()
+	{
+		var w = 0; var h = 0;
+		for(st in states)
+		{
+			if(st.width > w) w = st.width;
+			h += st.height + space;
+		}
+		var quad = new Quad(w,h,0x00ff00);
+		quad.x = -quad.width/2;
+		addChild(quad);
+	}
+
 	private function updateColor()
 	{
 		for(i in 0...states.length)
 		{
-			if(Std.is(states[i], StateText))
+			if(!Std.is(states[i], StateButton))
 				continue;
 			if(i == current)
 				states[i].fontColor = 0xff0000;
@@ -78,7 +93,7 @@ class StateMachine extends Sprite
 	private function initCurrent()
 	{
 		current = 0;
-		while(Std.is(states[current], StateText)) ++current;
+		while(!Std.is(states[current], StateButton)) ++current;
 		updateColor();
 	}
 
@@ -106,8 +121,21 @@ class StateMachine extends Sprite
 			current += up ? -1 : 1;
 			current = (current + total) % total;
 
-		}while(Std.is(states[current], StateText));
+		}while(!Std.is(states[current], StateButton));
 		updateColor();
+	}
+
+	public function getAnswer() : Int
+	{
+		for(st in states)
+		{
+			if(Std.is(st, StateInput))
+			{
+				return Std.int(st.text);
+				break;
+			}
+		}
+		return -1;
 	}
 }
 
@@ -140,12 +168,7 @@ class StateButton extends Button
 		addEventListener(Event.TRIGGERED, confirm);
 		addEventListener(Event.ADDED, function()
 		{
-			/*
-				The trace has to be here in order for the text
-				to be centered, but I don't know why.
-			*/
-			trace(width);
-			haxe.Log.clear();
+			width;
 			x = -width/2;
 		});
 	}
@@ -155,4 +178,30 @@ class StateButton extends Button
 
 	public function back()
 	{	if(bac != null) bac();}
+}
+
+class StateInput extends TextField
+{
+	public function new()
+	{
+		super(50,50,"","Flipps",20);
+		addEventListener(Event.ADDED, function()
+		{
+			x = -width/2;
+			addEventListener(KeyboardEvent.KEY_DOWN, addInput);
+
+		});
+		addEventListener(Event.REMOVED, function()
+		{
+			removeEventListeners(KeyboardEvent.KEY_DOWN);
+		});
+	}
+
+	private function addInput(e:KeyboardEvent)
+	{
+		if(e.keyCode >= 48 && e.keyCode <= 57)
+			text += Std.string(e.keyCode-48);
+		else if(e.keyCode == Keyboard.BACKSPACE)
+			text = text.substring(0);
+	}
 }

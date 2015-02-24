@@ -14,12 +14,14 @@ enum DIRECTION
 	NONE;
 }
 
+typedef Health = {hitpoints : Int, text : TextField}
 class Player extends TextField
 {
 	private var moving : Bool;
 	private var world : Overworld;
 	private var dirHeld : DIRECTION;
 	private var talking : Bool;
+	private var health : Health;
 
 	public function new(st:Overworld)
 	{
@@ -27,6 +29,8 @@ class Player extends TextField
 		world = st;
 		dirHeld = NONE;
 		moving = false;
+		health = {hitpoints : 50, text : new TextField(50,50,"50")};
+		addChild(health.text);
 
 		addEventListener(Event.ENTER_FRAME,
 		function(e:Event)
