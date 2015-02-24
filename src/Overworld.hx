@@ -51,13 +51,13 @@ class Overworld extends Sprite
 		addChild(new Player(this));
 
 		//this mate doesn't battle
-		addMate(5,5,["This is a test1","This is a test2","This is a test3"], "a_4");
+		addMate(5,5,["This is a test1","This is a test2","This is a test3"], "jordan_b");
 
 		//these ones does
-		addMate(10,0,["Can you beat me?", "Want to battle?"], PLUS, MEDIUM, "a_1");
-		addMate(10,5,["My skills are good", "Want to battle?"], MINUS, MEDIUM, "b_3");
-		addMate(10,10,["Think you're smarter?", "Want to battle?"], MULTIPLY, MEDIUM, "c_1");
-		addMate(10,15,["Come at me bro!", "Want to battle?"], DIVIDE, MEDIUM, "a_1");
+		addMate(10,0,["Can you beat me?", "Want to battle?"], PLUS, MEDIUM, "cherie_f");
+		addMate(10,5,["My skills are good", "Want to battle?"], MINUS, MEDIUM, "nancy_l");
+		addMate(10,10,["Think you're smarter?", "Want to battle?"], MULTIPLY, MEDIUM, "temi_f");
+		addMate(10,15,["Come at me bro!", "Want to battle?"], DIVIDE, MEDIUM, "rob_r");
 	}
 
 	private function addMate(xPos: UInt, yPos : UInt, s : Array<String>, ?op:OPERATION, ?diff:DIFFICULTY, ?mateTexture: String)
