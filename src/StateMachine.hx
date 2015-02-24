@@ -53,7 +53,7 @@ class StateMachine extends Sprite
 
 	private function reposition()
 	{
-		removeChildren(1);
+		removeChildren(5);
 		var yPos = Overworld.GRID_SIZE;
 		for(st in states)
 		{
@@ -66,15 +66,32 @@ class StateMachine extends Sprite
 
 	private function makeBorder()
 	{
-		var w = 0; var h = 0;
+		var w = 0; var h = 0;var sz = 5;
 		for(st in states)
 		{
 			if(st.width > w) w = st.width;
 			h += st.height + space;
 		}
-		var quad = new Quad(w,h,0x00ff00);
-		quad.x = -quad.width/2;
+		var quad = new Quad(w,h,0);
+		quad.x = -w/2;
 		addChild(quad);
+
+		var quad1 = new Quad(w,sz,0x008000);
+		quad1.x = -w/2;
+		addChild(quad1);
+
+		var quad2 = new Quad(w,sz,0x008000);
+		quad2.x = -w/2;
+		quad2.y = h;
+		addChild(quad2);
+
+		var quad3 = new Quad(sz,h,0x008000);
+		quad3.x = -w/2;
+		addChild(quad3);
+
+		var quad4 = new Quad(sz,h,0x008000);
+		quad4.x = -w/2 + w;
+		addChild(quad4);
 	}
 
 	private function updateColor()
@@ -86,7 +103,7 @@ class StateMachine extends Sprite
 			if(i == current)
 				states[i].fontColor = 0xff0000;
 			else
-				states[i].fontColor = 0x000000;
+				states[i].fontColor = 0xffffff;
 		}
 	}
 
@@ -143,7 +160,7 @@ class StateText extends TextField
 {
 	public function new(w:Int,h:Int,s:String,f:Int = 20)
 	{
-		super(w,h,s,"Fipps",f);
+		super(w,h,s,"Fipps",f,0xffffff);
 		addEventListener(Event.ADDED, function()
 		{
 			x = -width/2;
@@ -161,7 +178,6 @@ class StateButton extends Button
 		super(Texture.empty(20*s.length,20),s);
 		con = c;
 		bac = b;
-		color = 0;
 		fontSize = 20;
 		fontName = "Fipps";
 
@@ -184,7 +200,7 @@ class StateInput extends TextField
 {
 	public function new()
 	{
-		super(50,50,"","Flipps",20);
+		super(50,50,"","Flipps",20,0xffffff);
 		addEventListener(Event.ADDED, function()
 		{
 			x = -width/2;

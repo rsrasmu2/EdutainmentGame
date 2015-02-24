@@ -18,6 +18,7 @@ enum OPERATION
 }
 
 typedef MathProblem = {question : String, answer : Int}
+typedef Range = {bottom : Int, top : Int}
 class MathEngine
 {
 	public static function generateProblem(op:OPERATION, diff:DIFFICULTY) : MathProblem
@@ -32,19 +33,19 @@ class MathEngine
 		}
 	}
 
-	public static function rand(top : UInt) : Int
+	public static function rand(range : Range) : Int
 	{
 		// generate random numbers
-		return ceil(random() * top);
+		return ceil(random() * (range.top-range.bottom)+range.bottom);
 	}
 
 	private static function plus(diff : DIFFICULTY) : MathProblem
 	{
 		var t = switch(diff)
 		{
-			case EASY: 10;
-			case MEDIUM: 20;
-			case HARD: 30;
+			case EASY: {bottom : 1, top : 11};
+			case MEDIUM: {bottom : 10, top : 26};
+			case HARD: {bottom : 20, top : 51};
 		}
 
 		var a = rand(t);
@@ -57,9 +58,9 @@ class MathEngine
 	{
 		var t = switch(diff)
 		{
-			case EASY: 10;
-			case MEDIUM: 20;
-			case HARD: 30;
+			case EASY: {bottom : 1, top : 11};
+			case MEDIUM: {bottom : 10, top : 26};
+			case HARD: {bottom : 20, top : 51};
 		}
 
 		var a = rand(t);
@@ -74,9 +75,9 @@ class MathEngine
 	{
 		var t = switch(diff)
 		{
-			case EASY: 5;
-			case MEDIUM: 8;
-			case HARD: 12;
+			case EASY: {bottom : 1, top : 5};
+			case MEDIUM: {bottom : 4, top : 8};
+			case HARD: {bottom : 5, top : 13};
 		}
 
 		var a = rand(t);
@@ -88,9 +89,9 @@ class MathEngine
 	{
 		var t = switch(diff)
 		{
-			case EASY: 5;
-			case MEDIUM: 8;
-			case HARD: 12;
+			case EASY: {bottom : 1, top : 5};
+			case MEDIUM: {bottom : 4, top : 8};
+			case HARD: {bottom : 5, top : 13};
 		}
 
 		var a = rand(t);

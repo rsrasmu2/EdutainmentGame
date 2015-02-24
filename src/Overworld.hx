@@ -54,10 +54,10 @@ class Overworld extends Sprite
 		addMate(5,5,["This is a test1","This is a test2","This is a test3"]);
 
 		//these ones does
-		addMate(10,0,["Can you beat me?", "Want to battle?"], PLUS, MEDIUM);
-		addMate(10,5,["My skills are good", "Want to battle?"], MINUS, MEDIUM);
-		addMate(10,10,["Think you're smarter?", "Want to battle?"], MULTIPLY, MEDIUM);
-		addMate(10,15,["Come at me bro!", "Want to battle?"], DIVIDE, MEDIUM);
+		addMate(10,0,["Can you beat me?", "Want to battle?"], PLUS, HARD);
+		addMate(10,5,["My skills are good", "Want to battle?"], MINUS, HARD);
+		addMate(10,10,["Think you're smarter?", "Want to battle?"], MULTIPLY, HARD);
+		addMate(10,15,["Come at me bro!", "Want to battle?"], DIVIDE, HARD);
 	}
 
 	private function addMate(xPos: UInt, yPos : UInt, s : Array<String>, ?op:OPERATION, ?diff:DIFFICULTY)
