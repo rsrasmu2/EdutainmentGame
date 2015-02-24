@@ -122,7 +122,7 @@ class BattleMate extends Classmate
 		//text = new TextField(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"C","Fipps",20);
 		addChild(me);
 	}
-	
+
 	private function battle()
 	{
 		removeChild(state);
@@ -134,7 +134,7 @@ class BattleMate extends Classmate
 		state.x = 0;
 		addChild(state);
 	}
-	
+
 	private function setNext()
 	{
 		if (++currentIndex >= dialogue.length - 1)
@@ -155,8 +155,6 @@ class BattleMate extends Classmate
 			[new StateText(125,50,ques.question),
 			new StateInput(),
 			new StateButton("Answer",checkAnswer,checkAnswer)],
-			/*new StateText(125,50,"Answer is " + ques.answer),
-			new StateButton("Cannot answer yet...",endDialogue,endDialogue)],*/
 			50);
 		state.x = 0;
 		addChild(state);
@@ -175,15 +173,26 @@ class BattleMate extends Classmate
 	{
 		var ans = state.getAnswer();
 		removeChild(state);
+		var result = ques.answer == ans;
 		state = new StateMachine(
 		[new StateText(150,100,
-		ques.answer == ans ? "You got the question right!"
+		result ? "You got the question right!"
 		: "You got the question wrong..."),
 		new StateButton("Exit",endDialogue,endDialogue)],100);
+		if(!result)
+		{
+			p.takeDamage(switch(difficulty)
+			{
+				case EASY: 5;
+				case MEDIUM: 10;
+				case HARD: 20;
+			});
+		}
+
 		addChild(state);
 		state.x = 0;
 	}
-	
+
 	override private function endDialogue()
 	{
 		removeChild(state);

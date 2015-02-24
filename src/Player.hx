@@ -98,4 +98,11 @@ class Player extends TextField
 
 	public function stopTalking()
 	{	talking = false;}
+
+	public function takeDamage(d:UInt)
+	{
+		health.hitpoints -= d;
+		if(health.hitpoints <= 0) Menu.menu.gameOver();
+		else health.text.text = Std.string(health.hitpoints);
+	}
 }

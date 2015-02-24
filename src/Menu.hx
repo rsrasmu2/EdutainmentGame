@@ -7,7 +7,7 @@ enum MENU_TYPE
 	INSTRUCTIONS;
 	CREDITS;
 	OVERWORLD;
-	BATTLE;
+	GAME_OVER;
 }
 
 class Menu extends Sprite
@@ -17,6 +17,7 @@ class Menu extends Sprite
 	private var current : StateMachine;
 	private var instr : StateMachine;
 	private var cred : StateMachine;
+	private var gameover : StateMachine;
 
 	private inline static var creditsText =
 	"Credits\nTemitope Alaga\nJordan Harris\nAdd others' names later...";
@@ -44,6 +45,10 @@ class Menu extends Sprite
 			new StateText(200,100,creditsText),
 			new StateButton("Back", function(){setMenu(MAIN);},function(){setMenu(MAIN);})]);
 
+		gameover = new StateMachine(
+			[new StateText(200,100,"Game Over"),
+			new StateButton("Go back to Main Menu", function(){setMenu(MAIN);},function(){setMenu(MAIN);})]);
+
 		current = main;
 		addChild(current);
 	}
@@ -62,12 +67,14 @@ class Menu extends Sprite
 			case OVERWORLD:
 				current = null;
 				addChild(new Overworld());
-			default:
-				current = null;
-				trace("Action has not been defined");
+			case GAME_OVER:
+				current = gameover;
 		}
 		if(current != null) addChild(current);
 	}
+
+	public function gameOver()
+	{	setMenu(GAME_OVER);}
 
 	public function reset()
 	{	setMenu(MAIN);}
