@@ -6,14 +6,16 @@ import starling.text.*;
 
 class Root extends Sprite {
 
+	public static var assets: AssetManager;
+	
 	public function new() {
 		super();
 	}
 
 	public function start(startup:Startup) {
-		var assets = new AssetManager();
-		assets.enqueue("assets/BittyFont.fnt");
-		assets.enqueue("assets/BittyFont.png");
+		assets = new AssetManager();
+		assets.enqueue("assets/BittyFont.fnt", "assets/BittyFont.png");
+		assets.enqueue("assets/sprites.png", "assets/sprites.xml");
 		assets.loadQueue(function onProgress(ratio:Float) {
 			if (ratio == 1) {
 				// fade the loading screen, start game

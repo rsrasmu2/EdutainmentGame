@@ -51,18 +51,18 @@ class Overworld extends Sprite
 		addChild(new Player(this));
 
 		//this mate doesn't battle
-		addMate(5,5,["This is a test1","This is a test2","This is a test3"]);
+		addMate(5,5,["This is a test1","This is a test2","This is a test3"], "a_4");
 
 		//these ones does
-		addMate(10,0,["Can you beat me?", "Want to battle?"], PLUS, MEDIUM);
-		addMate(10,5,["My skills are good", "Want to battle?"], MINUS, MEDIUM);
-		addMate(10,10,["Think you're smarter?", "Want to battle?"], MULTIPLY, MEDIUM);
-		addMate(10,15,["Come at me bro!", "Want to battle?"], DIVIDE, MEDIUM);
+		addMate(10,0,["Can you beat me?", "Want to battle?"], PLUS, MEDIUM, "a_1");
+		addMate(10,5,["My skills are good", "Want to battle?"], MINUS, MEDIUM, "b_3");
+		addMate(10,10,["Think you're smarter?", "Want to battle?"], MULTIPLY, MEDIUM, "c_1");
+		addMate(10,15,["Come at me bro!", "Want to battle?"], DIVIDE, MEDIUM, "a_1");
 	}
 
-	private function addMate(xPos: UInt, yPos : UInt, s : Array<String>, ?op:OPERATION, ?diff:DIFFICULTY)
+	private function addMate(xPos: UInt, yPos : UInt, s : Array<String>, ?op:OPERATION, ?diff:DIFFICULTY, ?mateTexture: String)
 	{
-		var mate = (op == null || diff == null) ? new TalkMate(s) : new BattleMate(s,op,diff);
+		var mate = (op == null || diff == null) ? new TalkMate(s, mateTexture) : new BattleMate(s,op,diff,mateTexture);
 		mate.setPosition(xPos,yPos);
 		map[xPos][yPos] = 1;
 		classmates.push(mate);

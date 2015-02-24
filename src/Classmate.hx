@@ -2,21 +2,26 @@ import starling.display.Sprite;
 import starling.text.TextField;
 import StateMachine;
 import MathEngine;
+import starling.display.Image;
 
 class Classmate extends Sprite
 {
 	private var dialogue : Array<String>;
 	private var state : StateMachine;
-	private var text : TextField;
+	//private var text : TextField;
+	private var textureString: String;
 	private var p : Player;
 
-	private function new(s:Array<String>, st:StateMachine)
+	private function new(s:Array<String>, st:StateMachine, ?texStr: String)
 	{
 		super();
 		dialogue = s;
 		p = null;
 		state = st;
+		textureString = texStr;
+		if (textureString == null) { textureString = "a_1"; }
 		state.x = 0;
+		
 	}
 
 	public function startDialogue(ply:Player)
@@ -54,14 +59,18 @@ class TalkMate extends Classmate
 {
 	private var currentIndex : Int;
 
-	public function new(s:Array<String>)
+	public function new(s:Array<String>, ?texStr:String)
 	{
 		super(s, new StateMachine(
 		[new StateText(175,50,s[0]),
-		new StateButton("Next",setNext,endDialogue)],50));
+		new StateButton("Next",setNext,endDialogue)],50), texStr);
 		currentIndex = 0;
-		text = new TextField(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"C","Fipps",20);
-		addChild(text);
+		var me = new Image(Root.assets.getTexture(textureString));
+		me.width = 25;
+		me.height = 26;
+		me.smoothing = "none";
+		//text = new TextField(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"C","Fipps",20);
+		addChild(me);
 	}
 
 	private function setNext()
@@ -98,16 +107,20 @@ class BattleMate extends Classmate
 	private var ques : MathProblem;
 	private var currentIndex : Int;
 
-	public function new(s:Array<String>, op:OPERATION, diff:DIFFICULTY)
+	public function new(s:Array<String>, op:OPERATION, diff:DIFFICULTY, ?texStr: String)
 	{
 		super(s, new StateMachine(
 		[new StateText(175,50,s[0]),
-		new StateButton("Next",setNext,endDialogue)],50));
+		new StateButton("Next",setNext,endDialogue)],50), texStr);
 		currentIndex = 0;
 		operation = op;
 		difficulty = diff;
-		text = new TextField(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"C","Fipps",20);
-		addChild(text);
+		var me = new Image(Root.assets.getTexture(textureString));
+		me.width = 25;
+		me.height = 26;
+		me.smoothing = "none";
+		//text = new TextField(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"C","Fipps",20);
+		addChild(me);
 	}
 	
 	private function battle()
@@ -116,8 +129,8 @@ class BattleMate extends Classmate
 		state = new StateMachine(
 		[new StateText(175,50,dialogue[currentIndex]),
 		new StateButton("Yes",startBattle,startBattle),
-		new StateButton("No", endDialogue,endDialogue)],50);
-		text = new TextField(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"B","Fipps",20);
+		new StateButton("No", endDialogue, endDialogue)], 50);
+		//text = new TextField(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"B","Fipps",20);
 		state.x = 0;
 		addChild(state);
 	}

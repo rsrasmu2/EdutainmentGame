@@ -25,6 +25,7 @@ TASKS:
 - initiate a fight: walk up to student, press enter. Some dialogue, then go into arena!, -Al (no arena yet)
 - Graphic to show who you can fight currently (thought bubble, or '!')
 - Cannot fight people out of your rank
+- size up students better (the front-facing ones are 15x16, and the side-facing ones are 12x16. so, sizing them up to like 31x32 makes side-facing students look weird.)
 
 ----Arena:
 - display math questions one at a time, -Al
@@ -32,7 +33,6 @@ TASKS:
 - player pushes enter to submit answer, -Al
 - test to see if the player was correct, decrement player health if wrong or opponent health if right, -Al
 - player health goes down if incorrect answer input, -Al
-
 - time limit on answering math questions, player loses health if time runs out
 - time limit is a bar on the screen
 - allow the player to choose what type of math they are solving with a click menu at any time
@@ -42,7 +42,6 @@ ASSETS:
 -------
 We are doing an 8-bit style!
 - classroom objects: desks...
-- overworld students - Cherie
 - main character walking sprites - Nancy
 - classroom background
 - arena background
@@ -60,3 +59,5 @@ COMPLETE:
 - generate math questions - Nancy, DONE
 - Display dialogue in box at bottom of screen -Al, DONE 
 	(Dialogue is diplayed below the person the player is talking to)
+- overworld students - Cherie, DONE
+- implement student sprites - Nancy, DONE
