@@ -54,15 +54,15 @@ class Overworld extends Sprite
 		addMate(5,5,["This is a test1","This is a test2","This is a test3"]);
 
 		//these ones does
-		addMate(10,0,["Want to battle?"], PLUS, MEDIUM);
-		addMate(10,5,["Want to battle?"], MINUS, MEDIUM);
-		addMate(10,10,["Want to battle?"], MULTIPLY, MEDIUM);
-		addMate(10,15,["Want to battle?"], DIVIDE, MEDIUM);
+		addMate(10,0,["Can you beat me?", "Want to battle?"], PLUS, MEDIUM);
+		addMate(10,5,["My skills are good", "Want to battle?"], MINUS, MEDIUM);
+		addMate(10,10,["Think you're smarter?", "Want to battle?"], MULTIPLY, MEDIUM);
+		addMate(10,15,["Come at me bro!", "Want to battle?"], DIVIDE, MEDIUM);
 	}
 
 	private function addMate(xPos: UInt, yPos : UInt, s : Array<String>, ?op:OPERATION, ?diff:DIFFICULTY)
 	{
-		var mate = (op == null || diff == null) ? new TalkMate(s) : new BattleMate(s[0],op,diff);
+		var mate = (op == null || diff == null) ? new TalkMate(s) : new BattleMate(s,op,diff);
 		mate.setPosition(xPos,yPos);
 		map[xPos][yPos] = 1;
 		classmates.push(mate);

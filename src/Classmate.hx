@@ -47,6 +47,9 @@ class Classmate extends Sprite
 	}
 }
 
+
+
+
 class TalkMate extends Classmate
 {
 	private var currentIndex : Int;
@@ -54,7 +57,7 @@ class TalkMate extends Classmate
 	public function new(s:Array<String>)
 	{
 		super(s, new StateMachine(
-		[new StateText(100,50,s[0]),
+		[new StateText(175,50,s[0]),
 		new StateButton("Next",setNext,endDialogue)],50));
 		currentIndex = 0;
 		text = new TextField(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"C","Fipps",20);
@@ -68,7 +71,7 @@ class TalkMate extends Classmate
 		else
 		{
 			nextDialogue(new StateMachine(
-			[new StateText(100,50,dialogue[currentIndex]),
+			[new StateText(175,50,dialogue[currentIndex]),
 			new StateButton("Next",setNext,endDialogue)],50));
 		}
 	}
@@ -77,29 +80,58 @@ class TalkMate extends Classmate
 	{
 		currentIndex = 0;
 		state = new StateMachine(
-		[new StateText(100,50,dialogue[currentIndex]),
+		[new StateText(175,50,dialogue[currentIndex]),
 		new StateButton("Next",setNext,endDialogue)],50);
 		state.x = 0;
 	}
 }
+
+
+
+
+
 
 class BattleMate extends Classmate
 {
 	private var operation : OPERATION;
 	private var difficulty : DIFFICULTY;
 	private var ques : MathProblem;
+	private var currentIndex : Int;
 
-	public function new(s:String, op:OPERATION, diff:DIFFICULTY)
+	public function new(s:Array<String>, op:OPERATION, diff:DIFFICULTY)
 	{
-		super([s],
-		new StateMachine(
-		[new StateText(100,50,s),
-		new StateButton("Yes",startBattle,endDialogue),
-		new StateButton("No", endDialogue,endDialogue)],50));
+		super(s, new StateMachine(
+		[new StateText(175,50,s[0]),
+		new StateButton("Next",setNext,endDialogue)],50));
+		currentIndex = 0;
 		operation = op;
 		difficulty = diff;
-		text = new TextField(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"B","Fipps",20);
+		text = new TextField(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"C","Fipps",20);
 		addChild(text);
+	}
+	
+	private function battle()
+	{
+		removeChild(state);
+		state = new StateMachine(
+		[new StateText(175,50,dialogue[currentIndex]),
+		new StateButton("Yes",startBattle,startBattle),
+		new StateButton("No", endDialogue,endDialogue)],50);
+		text = new TextField(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"B","Fipps",20);
+		state.x = 0;
+		addChild(state);
+	}
+	
+	private function setNext()
+	{
+		if (++currentIndex >= dialogue.length - 1)
+			battle();
+		else
+		{
+			nextDialogue(new StateMachine(
+			[new StateText(175,50,dialogue[currentIndex]),
+			new StateButton("Next",setNext,battle)],50));
+		}
 	}
 
 	private function startBattle()
@@ -119,10 +151,10 @@ class BattleMate extends Classmate
 
 	override private function resetDialogue()
 	{
+		currentIndex = 0;
 		state = new StateMachine(
-		[new StateText(100,50,dialogue[0]),
-		new StateButton("Yes",startBattle,endDialogue),
-		new StateButton("No", endDialogue,endDialogue)],50);
+		[new StateText(175,50,dialogue[currentIndex]),
+		new StateButton("Next",setNext,endDialogue)],50);
 		state.x = 0;
 	}
 
@@ -137,5 +169,13 @@ class BattleMate extends Classmate
 		new StateButton("Exit",endDialogue,endDialogue)],100);
 		addChild(state);
 		state.x = 0;
+	}
+	
+	override private function endDialogue()
+	{
+		removeChild(state);
+		p.stopTalking();
+		p = null;
+		resetDialogue();
 	}
 }

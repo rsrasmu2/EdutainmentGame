@@ -19,7 +19,7 @@ class Menu extends Sprite
 	private var cred : StateMachine;
 
 	private inline static var creditsText =
-	"Credits\nTemitope Alaga\nAdd others' names later...";
+	"Credits\nTemitope Alaga\nJordan Harris\nAdd others' names later...";
 	private inline static var instructionsText =
 	"Add instructions to game later...";
 
