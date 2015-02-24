@@ -27,11 +27,11 @@ TASKS:
 - Cannot fight people out of your rank
 
 ----Arena:
-- display math questions one at a time
-- capture player input in text box
-- player pushes enter to submit answer
-- test to see if the player was correct, decrement player health if wrong or opponent health if right
-- player health goes down if incorrect answer input
+- display math questions one at a time, -Al
+- capture player input in text box, -Al
+- player pushes enter to submit answer, -Al
+- test to see if the player was correct, decrement player health if wrong or opponent health if right, -Al
+- player health goes down if incorrect answer input, -Al
 
 - time limit on answering math questions, player loses health if time runs out
 - time limit is a bar on the screen
