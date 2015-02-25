@@ -155,11 +155,11 @@ class Player extends Sprite
 	
 	private function movieSetUp() {
 		
-		playerFront = new Image(Root.assets.getTexture("b_front_"));
+		playerFront = new Image(Root.assets.getTexture("b_front"));
 		playerFront.width = 25;
 		playerFront.height = 26;
 		playerFront.smoothing = "none";
-		playerBack = new Image(Root.assets.getTexture("b_back_")); 
+		playerBack = new Image(Root.assets.getTexture("b_back")); 
 		playerBack.width = 25;
 		playerBack.height = 26;
 		playerBack.smoothing = "none";
@@ -172,10 +172,10 @@ class Player extends Sprite
 		playerRight.height = 27;
 		playerRight.smoothing = "none";
 				
-		animateUp = new MovieClip(Root.assets.getTextures("b_back_"), 4);
+		animateUp = new MovieClip(Root.assets.getTextures("b_back"), 4);
 		animateUp.width = 25;
 		animateUp.height = 26;
-		animateDown = new MovieClip(Root.assets.getTextures("b_front_"), 4);
+		animateDown = new MovieClip(Root.assets.getTextures("b_front"), 4);
 		animateDown.width = 25;
 		animateDown.height = 26;
 		animateLeft = new MovieClip(Root.assets.getTextures("b_left_"), 4);
