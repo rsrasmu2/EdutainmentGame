@@ -1,4 +1,4 @@
-FLEX_SDK ?= C:/flexsdk
+FLEX_SDK=C:\Users\Nancy\Documents\ApacheFlex
 
 APP=edutainment
 APP_XML=$(APP).xml
@@ -12,13 +12,13 @@ $(APP).swf: $(SOURCES)
 	-cp src \
 	-cp vendor \
 	-swf-version 11.8 \
-	-swf-header 640:640:60:ffffff \
+	-swf-header 512:512:60:ffffff \
 	-main Startup \
 	-swf $(APP).swf \
 	-swf-lib vendor/starling.swc --macro "patchTypes('vendor/starling.patch')"
 
 clean:
-	del $(APP).swf
+	rm $(APP).swf
 	
 test: $(APP).swf
-	$(ADL) -profile tv -screensize 640x640:640x640 $(APP_XML)
+	$(ADL) -profile tv -screensize 512x512:512x512 $(APP_XML)
