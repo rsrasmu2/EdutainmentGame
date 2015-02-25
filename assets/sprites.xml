@@ -1,41 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:5030d7315bb4aa91c053a518d6b48cf2:bc94ecee6a960719e4653e5876d10ba3:57ef0b4f36012e2dacefebfa7d58e2d4$ -->
 <TextureAtlas imagePath="sprites.png">
-	<SubTexture name="blonde_b" x="0" y="88" width="14" height="16"/>
-	<SubTexture name="blonde_f" x="0" y="70" width="14" height="16"/>
-	<SubTexture name="blonde_l" x="61" y="107" width="12" height="16"/>
-	<SubTexture name="blonde_r" x="62" y="0" width="12" height="16"/>
-	<SubTexture name="boy_b" x="0" y="35" width="14" height="15"/>
-	<SubTexture name="boy_f" x="0" y="18" width="14" height="15"/>
-	<SubTexture name="boy_l" x="61" y="90" width="12" height="15"/>
-	<SubTexture name="boy_r" x="75" y="53" width="12" height="15"/>
-	<SubTexture name="cherie_b" x="32" y="71" width="13" height="16"/>
-	<SubTexture name="cherie_f" x="75" y="35" width="12" height="16"/>
-	<SubTexture name="cherie_l" x="32" y="89" width="13" height="16"/>
-	<SubTexture name="cherie_r" x="32" y="107" width="13" height="16"/>
-	<SubTexture name="desk_1" x="48" y="18" width="10" height="6"/>
-	<SubTexture name="desk_2" x="48" y="26" width="10" height="6"/>
-	<SubTexture name="girl_b" x="61" y="72" width="12" height="16"/>
-	<SubTexture name="girl_f" x="61" y="54" width="12" height="16"/>
-	<SubTexture name="girl_l" x="61" y="36" width="12" height="16"/>
-	<SubTexture name="girl_r" x="61" y="18" width="12" height="16"/>
-	<SubTexture name="jordan_b" x="16" y="69" width="14" height="15"/>
-	<SubTexture name="jordan_f" x="16" y="18" width="14" height="15"/>
-	<SubTexture name="jordan_l" x="47" y="86" width="12" height="16"/>
-	<SubTexture name="jordan_r" x="48" y="0" width="12" height="16"/>
-	<SubTexture name="nancy_b" x="32" y="18" width="14" height="15"/>
-	<SubTexture name="nancy_f" x="16" y="86" width="14" height="16"/>
-	<SubTexture name="nancy_l" x="34" y="0" width="12" height="15"/>
-	<SubTexture name="nancy_r" x="75" y="18" width="12" height="15"/>
-	<SubTexture name="prof" x="0" y="0" width="16" height="16"/>
-	<SubTexture name="punk_b" x="0" y="106" width="14" height="16"/>
-	<SubTexture name="punk_f" x="0" y="52" width="14" height="16"/>
-	<SubTexture name="punk_l" x="47" y="35" width="12" height="15"/>
-	<SubTexture name="punk_r" x="47" y="52" width="12" height="15"/>
-	<SubTexture name="rob_b" x="18" y="0" width="14" height="16"/>
-	<SubTexture name="rob_f" x="16" y="104" width="14" height="16"/>
-	<SubTexture name="rob_l" x="32" y="53" width="13" height="16"/>
-	<SubTexture name="rob_r" x="32" y="35" width="13" height="16"/>
-	<SubTexture name="temi_b" x="16" y="52" width="14" height="15"/>
-	<SubTexture name="temi_f" x="16" y="35" width="14" height="15"/>
-	<SubTexture name="temi_l" x="47" y="104" width="12" height="15"/>
-	<SubTexture name="temi_r" x="47" y="69" width="12" height="15"/>
+    <SubTexture name="b_back" x="2" y="20" width="14" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="b_back_left" x="2" y="182" width="14" height="15" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="b_back_right" x="2" y="199" width="14" height="15" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="b_front" x="2" y="38" width="14" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="b_front_left" x="2" y="216" width="14" height="15" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="b_front_right" x="2" y="233" width="14" height="15" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="b_left_1" x="2" y="369" width="13" height="16" frameX="-1" frameY="0" frameWidth="15" frameHeight="16"/>
+    <SubTexture name="b_left_2" x="17" y="369" width="13" height="16" frameX="-1" frameY="0" frameWidth="15" frameHeight="16"/>
+    <SubTexture name="b_right_1" x="2" y="387" width="13" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="b_right_2" x="17" y="387" width="13" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="blonde_b" x="2" y="56" width="14" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="blonde_f" x="2" y="74" width="14" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="blonde_l" x="18" y="20" width="12" height="16" frameX="-2" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="blonde_r" x="18" y="38" width="12" height="16" frameX="-2" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="boy_b" x="2" y="250" width="14" height="15" frameX="-1" frameY="-1" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="boy_f" x="2" y="267" width="14" height="15" frameX="-1" frameY="-1" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="boy_l" x="18" y="182" width="12" height="15" frameX="-2" frameY="-1" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="boy_r" x="18" y="199" width="12" height="15" frameX="-2" frameY="-1" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="cherie_b" x="2" y="405" width="13" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="cherie_f" x="18" y="56" width="12" height="16" frameX="-2" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="cherie_l" x="17" y="405" width="13" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="cherie_r" x="2" y="423" width="13" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="desk_1" x="20" y="2" width="10" height="6" frameX="-3" frameY="-10" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="desk_2" x="20" y="10" width="10" height="6" frameX="-3" frameY="-10" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="girl_b" x="18" y="74" width="12" height="16" frameX="-2" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="girl_f" x="18" y="92" width="12" height="16" frameX="-2" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="girl_l" x="18" y="110" width="12" height="16" frameX="-2" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="girl_r" x="18" y="128" width="12" height="16" frameX="-2" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="jordan_b" x="2" y="284" width="14" height="15" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="jordan_f" x="2" y="301" width="14" height="15" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="jordan_l" x="18" y="146" width="12" height="16" frameX="-2" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="jordan_r" x="18" y="164" width="12" height="16" frameX="-2" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="nancy_b" x="2" y="318" width="14" height="15" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="nancy_f" x="2" y="92" width="14" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="nancy_l" x="18" y="216" width="12" height="15" frameX="-2" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="nancy_r" x="18" y="233" width="12" height="15" frameX="-2" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="prof" x="2" y="2" width="16" height="16"/>
+    <SubTexture name="punk_b" x="2" y="110" width="14" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="punk_f" x="2" y="128" width="14" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="punk_l" x="18" y="250" width="12" height="15" frameX="-2" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="punk_r" x="18" y="267" width="12" height="15" frameX="-2" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="rob_b" x="2" y="146" width="14" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="rob_f" x="2" y="164" width="14" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="rob_l" x="2" y="441" width="13" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="rob_r" x="17" y="423" width="13" height="16" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="temi_b" x="2" y="335" width="14" height="15" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="temi_f" x="2" y="352" width="14" height="15" frameX="-1" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="temi_l" x="18" y="284" width="12" height="15" frameX="-2" frameY="0" frameWidth="16" frameHeight="16"/>
+    <SubTexture name="temi_r" x="18" y="301" width="12" height="15" frameX="-2" frameY="0" frameWidth="16" frameHeight="16"/>
 </TextureAtlas>

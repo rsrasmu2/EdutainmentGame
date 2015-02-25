@@ -42,7 +42,6 @@ ASSETS:
 -------
 We are doing an 8-bit style!
 - classroom objects: desks...
-- main character walking sprites - Nancy
 - classroom background
 - arena background
 - FAIL or PASS for end of fight
@@ -61,3 +60,4 @@ COMPLETE:
 	(Dialogue is diplayed below the person the player is talking to)
 - overworld students - Cherie, DONE
 - implement student sprites - Nancy, DONE
+- main character walking sprites - Nancy, DONE
