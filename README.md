@@ -18,37 +18,27 @@ TASKS:
 ----Misc:
 - "Are you a boy or a girl?" different sprite based on response - Nancy
 - Optional: "What is your name?" store and use in dialogue
-- Optional: save and load files?
 
 ----Overworld:
-- player movement -Al (change to WASD later, works with arrow keys currently)
-- initiate a fight: walk up to student, press enter. Some dialogue, then go into arena!, -Al (no arena yet)
 - Graphic to show who you can fight currently (thought bubble, or '!')
-- Cannot fight people out of your rank
-- size up students better (the front-facing ones are 15x16, and the side-facing ones are 12x16. so, sizing them up to like 31x32 makes side-facing students look weird.)
-
-----Arena:
-- display math questions one at a time, -Al
-- capture player input in text box, -Al
-- player pushes enter to submit answer, -Al
-- test to see if the player was correct, decrement player health if wrong or opponent health if right, -Al
+- Cannot fight people again *if you win*
+- fix dialogue boxes to stay on screen and not block character (move to bottom?)
+- display 5 math questions per student
+- player health increases once fight is won
+--- back row: increases 5 points, front row: increases 10 points, professor: increases 5 points (=100)
 - player health goes down if incorrect answer input, -Al
-- time limit on answering math questions, player loses health if time runs out
-- time limit is a bar on the screen
-- allow the player to choose what type of math they are solving with a click menu at any time
--- Default to addition
+- Optional: time limit on answering math questions, player loses health if time runs out
+- Optional: time limit is a bar on the screen
+- You win! Screen once you get your grade to 100%
 
 ASSETS:
 -------
 We are doing an 8-bit style!
-- classroom objects: desks...
-- classroom background
-- arena background
-- FAIL or PASS for end of fight
-- optional: animations for the 'fights' (eg. happy/sad player sprite when questions answered)
-- optional: more detailed sprites in fights
+- classroom background - Cherie
 - Music - battle and overworld?
 - Fight sounds
+- load screen - Nancy
+- thought bubble - Nancy
 
 COMPLETE:
 ---------
@@ -61,3 +51,21 @@ COMPLETE:
 - overworld students - Cherie, DONE
 - implement student sprites - Nancy, DONE
 - main character walking sprites - Nancy, DONE
+- classroom objects: desks... - Cherie, DONE
+- size up students better - Nancy, DONE
+- initiate a fight: walk up to student, press enter. Some dialogue, then start questions -Al, DONE
+- player movement -Al, DONE (change to WASD later?)
+- capture player input in text box, -Al, DONE
+- player pushes enter to submit answer, -Al, DONE
+- display math questions one at a time -Al, DONE
+- test to see if the player was correct - Al, DONE
+
+DESERTED TASKS:
+---------------
+- arena background
+- FAIL or PASS for end of fight
+- optional: animations for the 'fights' (eg. happy/sad player sprite when questions answered)
+- optional: more detailed sprites in fights
+- Optional: save and load files?
+- allow the player to choose what type of math they are solving with a click menu at any time
+-- Default to addition
