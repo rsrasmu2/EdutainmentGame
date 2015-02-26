@@ -19,15 +19,23 @@ class Overworld extends Sprite
 		addChild(new Image(Root.assets.getTexture("classroom")));
 
 		quad = new Quad(
-		row == null ? Starling.current.stage.stageWidth : row*GRID_SIZE,
-		col == null ? Starling.current.stage.stageHeight : col*GRID_SIZE,0xdddddd);
-		map = new Array<Array<UInt>>();
-		classmates = new Array();
-		desks = new Array();
+			row == null ? Starling.current.stage.stageWidth : row*GRID_SIZE,
+			col == null ? Starling.current.stage.stageHeight : col*GRID_SIZE,0xdddddd
+		);
 
 		quad.alpha = 0.75;
 		addChild(quad);
 
+		createGrid(quad);
+		createMap();
+		
+		addDesks();
+		addMates();
+		
+		addChild(new Player(this));
+	}
+	
+	private function createGrid(quad:Quad) {
 		//grid
 		var h = 0;
 		while(h <= quad.height)
@@ -45,16 +53,22 @@ class Overworld extends Sprite
 			addChild(q);
 			r += GRID_SIZE;
 		}
-
+	}
+	
+	private function createMap() {
+		map = new Array<Array<UInt>>();
+	
 		//map to store all objects on overworld
 		for(i in 0...Std.int(quad.width/GRID_SIZE))
 		{
 			map[i] = new Array();
 			map[i] = [for(j in 0...Std.int(quad.height/GRID_SIZE)) 0];
 		}
-
-		addChild(new Player(this));
-
+	}
+	
+	private function addMates() {
+		classmates = new Array();
+	
 		//this mate doesn't battle
 		addMate(3,3,["Welcome to Math RPG!",
 		"Talk to the students and answer their questions correctly.",
@@ -77,21 +91,7 @@ class Overworld extends Sprite
 		addMate(5,15,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, EASY, 5);
 		addMate(10,15,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, MEDIUM, 3);
 		addMate(15,15,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, HARD, 1);
-
-		var teacher = new Teacher(this);
-		teacher.setPosition(19, 10);
-		map[19][10] = 1;
-		classmates.push(teacher);
-		addChild(teacher);
-
-		// all desks
-		addDesk(3, 2, "desk_1");
-		addDesk(8, 2, "desk_2");
-		addDesk(12, 2, "desk_1");
-		addDesk(3, 6, "desk_1");
-		addDesk(8, 6, "desk_2");
-		addDesk(12, 6, "desk_2");
-
+		
 		//these ones does
 		/*addMate(8, 0, ["Are you sure about this?", "Want to battle?"], MULTIPLY, HARD, "prof");
 
@@ -102,6 +102,24 @@ class Overworld extends Sprite
 		addMate(3, 7, ["No way you'll beat me!", "Want to battle?"], DIVIDE, EASY, "girl_b");
 		addMate(8, 7, ["I love pink!", "Want to battle?"], PLUS, EASY, "punk_f");
 		addMate(12, 7, ["Math is hard.", "Want to battle?"], MINUS, EASY, "blonde_r");*/
+		
+		//var teacher = new Teacher(this);
+		//teacher.setPosition(19, 10);
+		//map[19][10] = 1;
+		//classmates.push(teacher);
+		//addChild(teacher);
+	}
+	
+	private function addDesks() {
+		desks = new Array();
+	
+		// all desks
+		addDesk(3, 2, "desk_1");
+		addDesk(8, 2, "desk_2");
+		addDesk(12, 2, "desk_1");
+		addDesk(3, 6, "desk_1");
+		addDesk(8, 6, "desk_2");
+		addDesk(12, 6, "desk_2");
 	}
 
 	private function addMate(xPos: UInt, yPos : UInt, s : Array<String>,
