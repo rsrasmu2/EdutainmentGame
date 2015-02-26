@@ -85,52 +85,41 @@ class Overworld extends Sprite
 		classmates = new Array();
 
 		//this mate doesn't battle
-		addMate(3,5,["Welcome to Math RPG!",
+		/*addMate(3,5,["Welcome to Math RPG!",
 		"Talk to the students and answer their questions correctly.",
 		"After that, talk to the teacher and answer his questions to win the game!"],
-		"jordan_b");
+		"jordan_b");*/
 
 		//these ones does
-		var ae = addMate(5,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, EASY, 5, true);
-		var am = addMate(10,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, MEDIUM, 3, false);
-		var ah = addMate(13,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, HARD, 1, false);
+		var ae = addMate(3,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, EASY, 5, true);
+		var am = addMate(8,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, MEDIUM, 3, false);
+		var ah = addMate(11,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, HARD, 1, false);
 		cast(ae,BattleMate).setNextBattle(cast(am,BattleMate));
 		cast(am,BattleMate).setNextBattle(cast(ah,BattleMate));
 
-		var se = addMate(5,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, EASY, 5, true);
-		var sm = addMate(10,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, MEDIUM, 3, false);
-		var sh = addMate(13,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, HARD, 1, false);
+		var se = addMate(3,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, EASY, 5, true);
+		var sm = addMate(8,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, MEDIUM, 3, false);
+		var sh = addMate(11,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, HARD, 1, false);
 		cast(se,BattleMate).setNextBattle(cast(sm,BattleMate));
 		cast(sm,BattleMate).setNextBattle(cast(sh,BattleMate));
 
-		var me = addMate(5,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, EASY, 5, true);
-		var mm = addMate(10,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, MEDIUM, 3, false);
-		var mh = addMate(13,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, HARD, 1, false);
+		var me = addMate(3,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, EASY, 5, true);
+		var mm = addMate(8,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, MEDIUM, 3, false);
+		var mh = addMate(11,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, HARD, 1, false);
 		cast(me,BattleMate).setNextBattle(cast(mm,BattleMate));
 		cast(mm,BattleMate).setNextBattle(cast(mh,BattleMate));
 
-		var de = addMate(5,3,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, EASY, 5, true);
-		var dm = addMate(10,3,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, MEDIUM, 3, false);
-		var dh = addMate(13,3,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, HARD, 1, false);
+		var de = addMate(3,3,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, EASY, 5, true);
+		var dm = addMate(8,3,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, MEDIUM, 3, false);
+		var dh = addMate(11,3,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, HARD, 1, false);
 		cast(de,BattleMate).setNextBattle(cast(dm,BattleMate));
 		cast(dm,BattleMate).setNextBattle(cast(dh,BattleMate));
 
-		//these ones does
-		/*addMate(8, 0, ["Are you sure about this?", "Want to battle?"], MULTIPLY, HARD, "prof");
-
-		addMate(3,3,["Can you beat me?", "Want to battle?"], PLUS, MEDIUM, "cherie_f");
-		addMate(8,3,["My skills are good!", "Want to battle?"], MINUS, MEDIUM, "nancy_l");
-		addMate(12,3,["Think you're smarter?", "Want to battle?"], MULTIPLY, MEDIUM, "temi_f");
-
-		addMate(3, 7, ["No way you'll beat me!", "Want to battle?"], DIVIDE, EASY, "girl_b");
-		addMate(8, 7, ["I love pink!", "Want to battle?"], PLUS, EASY, "punk_f");
-		addMate(12, 7, ["Math is hard.", "Want to battle?"], MINUS, EASY, "blonde_r");*/
-
-		//var teacher = new Teacher(this);
-		//teacher.setPosition(19, 10);
-		//map[19][10] = 1;
-		//classmates.push(teacher);
-		//addChild(teacher);
+		var teacher = new Teacher(this);
+		teacher.setPosition(14, 3);
+		map[14][3] = 1;
+		classmates.push(teacher);
+		addChild(teacher);
 	}
 
 	private function addDesks() {
@@ -230,5 +219,5 @@ class Overworld extends Sprite
 	}
 
 	public function allClassmatesBeaten() : Bool
-	{	return classmates == [];}
+	{	return classmates.length == 1;}
 }
