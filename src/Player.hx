@@ -193,18 +193,20 @@ class Player extends Sprite
 		playerRight.scaleY = 2;
 		playerRight.smoothing = "none";
 
-		animateUp = new MovieClip(Root.assets.getTextures("b_back"), 4);
+		var frameRate = 4;
+		animateUp = new MovieClip(Root.assets.getTextures("b_back"), frameRate);
 		animateUp.scaleX = 2;
 		animateUp.scaleY = 2;
-		animateDown = new MovieClip(Root.assets.getTextures("b_front"), 4);
+		animateDown = new MovieClip(Root.assets.getTextures("b_front"), frameRate);
 		animateDown.scaleX = 2;
 		animateDown.scaleY = 2;
-		animateLeft = new MovieClip(Root.assets.getTextures("b_left_"), 4);
+		animateLeft = new MovieClip(Root.assets.getTextures("b_left_"), frameRate);
 		animateLeft.scaleX = 2;
 		animateLeft.scaleY = 2;
-		animateRight = new MovieClip(Root.assets.getTextures("b_right_"), 4);
+		animateRight = new MovieClip(Root.assets.getTextures("b_right_"), frameRate);
 		animateRight.scaleX = 2;
 		animateRight.scaleY = 2;
+
 	}
 
 	private function removeStatic()
