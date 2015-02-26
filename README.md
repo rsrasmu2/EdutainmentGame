@@ -26,12 +26,10 @@ TASKS:
 - stop sprite repeats
 - You win! Screen once you get your grade to 100% after professor fight
 - Optional: Fix character animation clipping
+- Optional: User input is in our bitmap font
 
 ASSETS:
 -------
-We are doing an 8-bit style!
-- Music for overworld
-- Fight sounds
 - load screen - Nancy
 
 COMPLETE:
@@ -61,6 +59,7 @@ COMPLETE:
 - thought bubble - Nancy, DONE
 - player health goes down if incorrect answer input, -Al, DONE
 - classroom background - Cherie, DONE
+- Music for overworld - Al, DONE
 
 DESERTED TASKS:
 ---------------
