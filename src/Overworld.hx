@@ -75,27 +75,27 @@ class Overworld extends Sprite
 		classmates = new Array();
 	
 		//this mate doesn't battle
-		addMate(3,3,["Welcome to Math RPG!",
+		addMate(3,5,["Welcome to Math RPG!",
 		"Talk to the students and answer their questions correctly.",
 		"After that, talk to the teacher and answer his questions to win the game!"],
 		"jordan_b");
 
 		//these ones does
-		addMate(5,0,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, EASY, 5);
-		addMate(10,0,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, MEDIUM, 3);
-		addMate(15,0,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, HARD, 1);
+		addMate(5,2,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, EASY, 5);
+		addMate(10,2,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, MEDIUM, 3);
+		addMate(13,2,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, HARD, 1);
 
-		addMate(5,5,["My skills are good", "Want to battle?"], "nancy_l",MINUS, EASY, 5);
-		addMate(10,5,["My skills are good", "Want to battle?"], "nancy_l",MINUS, MEDIUM, 3);
-		addMate(15,5,["My skills are good", "Want to battle?"], "nancy_l",MINUS, HARD, 1);
+		addMate(5,7,["My skills are good", "Want to battle?"], "nancy_l",MINUS, EASY, 5);
+		addMate(10,7,["My skills are good", "Want to battle?"], "nancy_l",MINUS, MEDIUM, 3);
+		addMate(13,7,["My skills are good", "Want to battle?"], "nancy_l",MINUS, HARD, 1);
 
-		addMate(5,10,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, EASY, 5);
-		addMate(10,10,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, MEDIUM, 3);
-		addMate(15,10,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, HARD, 1);
+		addMate(5,12,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, EASY, 5);
+		addMate(10,12,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, MEDIUM, 3);
+		addMate(13,12,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, HARD, 1);
 
 		addMate(5,15,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, EASY, 5);
 		addMate(10,15,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, MEDIUM, 3);
-		addMate(15,15,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, HARD, 1);
+		addMate(13,15,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, HARD, 1);
 		
 		//these ones does
 		/*addMate(8, 0, ["Are you sure about this?", "Want to battle?"], MULTIPLY, HARD, "prof");
@@ -119,12 +119,12 @@ class Overworld extends Sprite
 		desks = new Array();
 	
 		// all desks
-		addDesk(3, 2, "desk_1");
-		addDesk(8, 2, "desk_2");
-		addDesk(12, 2, "desk_1");
-		addDesk(3, 6, "desk_1");
-		addDesk(8, 6, "desk_2");
-		addDesk(12, 6, "desk_2");
+		addDesk(3, 4, "desk_1");
+		addDesk(8, 4, "desk_2");
+		addDesk(12, 4, "desk_1");
+		addDesk(3, 8, "desk_1");
+		addDesk(8, 8, "desk_2");
+		addDesk(12, 8, "desk_2");
 	}
 
 	private function addMate(xPos: UInt, yPos : UInt, s : Array<String>,
