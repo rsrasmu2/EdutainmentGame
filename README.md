@@ -20,9 +20,7 @@ TASKS:
 
 ----Overworld:
 - move dialogue boxes to bottom?
-- block player from walking on the front wall
 - change battlemate to classmate after the fight ("aw, I lost")
-- fix math difficulty - Nancy
 - stop sprite repeats
 - You win! Screen once you get your grade to 100% after professor fight
 - Optional: Fix character animation clipping
@@ -30,7 +28,7 @@ TASKS:
 
 ASSETS:
 -------
-- load screen - Nancy
+- load screen - Cherie
 
 COMPLETE:
 ---------
@@ -60,6 +58,8 @@ COMPLETE:
 - player health goes down if incorrect answer input, -Al, DONE
 - classroom background - Cherie, DONE
 - Music for overworld - Al, DONE
+- fix math difficulty - Nancy, DONE
+- block player from walking on the front wall - Cherie, DONE
 
 DESERTED TASKS:
 ---------------

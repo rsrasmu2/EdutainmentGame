@@ -43,9 +43,9 @@ class MathEngine
 	{
 		var t = switch(diff)
 		{
-			case EASY: {bottom : 1, top : 11};
-			case MEDIUM: {bottom : 10, top : 26};
-			case HARD: {bottom : 20, top : 51};
+			case EASY: {bottom : 1, top : 6};
+			case MEDIUM: {bottom : 2, top : 10};
+			case HARD: {bottom : 10, top : 25};
 		}
 
 		var a = rand(t);
@@ -58,16 +58,16 @@ class MathEngine
 	{
 		var t = switch(diff)
 		{
-			case EASY: {bottom : 1, top : 11};
-			case MEDIUM: {bottom : 10, top : 26};
-			case HARD: {bottom : 20, top : 51};
+			case EASY: {bottom : 2, top : 11};
+			case MEDIUM: {bottom : 5, top : 20};
+			case HARD: {bottom : 8, top : 25};
 		}
 
 		var a = rand(t);
 		var b = rand(t);
 
 		//for simplicity, no negatives ever (might change)
-		while(b > a) b = rand(t);
+		while ((b > a) || (b == a)) { b = rand(t); a = rand(t); }
 		return {question : a + " - " + b, answer : a - b};
 	}
 
@@ -75,9 +75,9 @@ class MathEngine
 	{
 		var t = switch(diff)
 		{
-			case EASY: {bottom : 1, top : 5};
-			case MEDIUM: {bottom : 4, top : 8};
-			case HARD: {bottom : 5, top : 13};
+			case EASY: {bottom : 2, top : 7};
+			case MEDIUM: {bottom : 3, top : 9};
+			case HARD: {bottom : 4, top : 12};
 		}
 
 		var a = rand(t);
@@ -89,16 +89,16 @@ class MathEngine
 	{
 		var t = switch(diff)
 		{
-			case EASY: {bottom : 1, top : 5};
-			case MEDIUM: {bottom : 4, top : 8};
-			case HARD: {bottom : 5, top : 13};
+			case EASY: {bottom : 2, top : 35};
+			case MEDIUM: {bottom : 4, top : 40};
+			case HARD: {bottom : 6, top : 60};
 		}
 
 		var a = rand(t);
 		var b = rand(t);
 
 		//ensure answer isn't a fraction
-		while(a % b != 0) b = rand(t);
+		while ((a % b != 0) || (a == b) || (b > 12)) { b = rand(t); a = rand(t); }
 		return {question : a + " / " + b, answer : Std.int(a/b)};
 	}
 }
