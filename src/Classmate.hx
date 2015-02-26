@@ -214,6 +214,7 @@ class BattleMate extends Classmate
 
 	private function endPlayer()
 	{
+		p.levelUp(5);
 		endDialogue();
 		cast(parent, Overworld).removeClassmate(this);
 	}

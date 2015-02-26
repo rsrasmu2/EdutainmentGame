@@ -25,6 +25,7 @@ class Player extends Sprite
 	private var dirHeld : DIRECTION;
 	private var talking : Bool;
 	private var health : Health;
+	private var maxHealth : Int;
 
 	private var playerFront: Image;
 	private var playerBack: Image;
@@ -49,7 +50,8 @@ class Player extends Sprite
 		movieSetUp();
 		addChild(playerFront);
 
-		health = {hitpoints : 50, text : new TextField(100,50,"Health: 50","Fipps",20)};
+		maxHealth = 50;
+		health = {hitpoints : maxHealth, text : new TextField(100,50,"Health: " + maxHealth,"Fipps",20)};
 		addEventListener(Event.ADDED, function()
 		{
 			parent.addChild(health.text);
@@ -178,6 +180,12 @@ class Player extends Sprite
 		health.hitpoints -= d;
 		if(health.hitpoints <= 0) Menu.menu.gameOver();
 		else health.text.text = "Health: " + Std.string(health.hitpoints);
+	}
+	
+	public function levelUp(healthGain:UInt) {
+		maxHealth += healthGain;
+		health.hitpoints = maxHealth;
+		health.text.text = "Health: " + Std.string(health.hitpoints);
 	}
 
 	private function movieSetUp() {
