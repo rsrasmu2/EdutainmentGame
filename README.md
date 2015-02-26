@@ -24,7 +24,6 @@ TASKS:
 - Cannot fight people again *if you win*
 - fix dialogue boxes to stay on screen and not block character (move to bottom?)
 - display 5 math questions per student
-- player health increases once fight is won
 --- back row: increases 5 points, front row: increases 10 points, professor: increases 5 points (=100)
 - player health goes down if incorrect answer input, -Al
 - Optional: time limit on answering math questions, player loses health if time runs out
@@ -59,6 +58,7 @@ COMPLETE:
 - player pushes enter to submit answer, -Al, DONE
 - display math questions one at a time -Al, DONE
 - test to see if the player was correct - Al, DONE
+- player health increases once fight is won -Bobby, DONE
 
 DESERTED TASKS:
 ---------------

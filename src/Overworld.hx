@@ -37,7 +37,9 @@ class Overworld extends Sprite
 		addDesks();
 		addMates();
 		
-		addChild(new Player(this));
+		var p = addChild(new Player(this));
+		p.x = 1 * GRID_SIZE;
+		p.y = 15 * GRID_SIZE;
 	}
 	
 	private function createGrid(quad:Quad) {
@@ -81,21 +83,21 @@ class Overworld extends Sprite
 		"jordan_b");
 
 		//these ones does
-		addMate(5,2,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, EASY, 5);
-		addMate(10,2,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, MEDIUM, 3);
-		addMate(13,2,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, HARD, 1);
+		addMate(5,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, EASY, 5);
+		addMate(10,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, MEDIUM, 3);
+		addMate(13,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, HARD, 1);
 
-		addMate(5,7,["My skills are good", "Want to battle?"], "nancy_l",MINUS, EASY, 5);
-		addMate(10,7,["My skills are good", "Want to battle?"], "nancy_l",MINUS, MEDIUM, 3);
-		addMate(13,7,["My skills are good", "Want to battle?"], "nancy_l",MINUS, HARD, 1);
+		addMate(5,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, EASY, 5);
+		addMate(10,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, MEDIUM, 3);
+		addMate(13,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, HARD, 1);
 
-		addMate(5,12,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, EASY, 5);
-		addMate(10,12,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, MEDIUM, 3);
-		addMate(13,12,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, HARD, 1);
+		addMate(5,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, EASY, 5);
+		addMate(10,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, MEDIUM, 3);
+		addMate(13,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, HARD, 1);
 
-		addMate(5,15,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, EASY, 5);
-		addMate(10,15,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, MEDIUM, 3);
-		addMate(13,15,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, HARD, 1);
+		addMate(5,2,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, EASY, 5);
+		addMate(10,2,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, MEDIUM, 3);
+		addMate(13,2,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, HARD, 1);
 		
 		//these ones does
 		/*addMate(8, 0, ["Are you sure about this?", "Want to battle?"], MULTIPLY, HARD, "prof");
