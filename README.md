@@ -24,7 +24,6 @@ TASKS:
 - stop sprite repeats
 - You win! Screen once you get your grade to 100% after professor fight
 - Optional: Fix character animation clipping
-- Optional: User input is in our bitmap font
 
 ASSETS:
 -------
@@ -60,6 +59,7 @@ COMPLETE:
 - Music for overworld - Al, DONE
 - fix math difficulty - Nancy, DONE
 - block player from walking on the front wall - Cherie, DONE
+- Optional: User input is in our bitmap font -Al, Done
 
 DESERTED TASKS:
 ---------------
