@@ -20,9 +20,9 @@ class Menu extends Sprite
 	private var gameover : StateMachine;
 
 	private inline static var creditsText =
-	"Credits\nTemitope Alaga\nJordan Harris\nAdd others' names later...";
+	"Credits\nTemitope Alaga\nJordan Harris\nNancy McCollough\nCherie Parsons\nRobert Rasmussen";
 	private inline static var instructionsText =
-	"Add instructions to game later...";
+	"You are a student that is failing math class. Challenge your classmates to math battles and improve! You must answer all their questions correctly if you want your grade to go up. The students in the back are easier, and the students in the front are harder. Once you beat the professor, you will earn your A+! But be careful, when you answer a question wrong, your grade will go down. Don't let it get to 0, or it's game over!";
 
 	public function new()
 	{
