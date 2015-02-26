@@ -70,6 +70,10 @@ class Overworld extends Sprite
 			map[i] = new Array();
 			map[i] = [for(j in 0...Std.int(quad.height/GRID_SIZE)) 0];
 		}
+		for(i in 0...Std.int(quad.width/GRID_SIZE)){
+			map[i][0] = 1;
+			map[i][1] = 1;
+		}
 	}
 
 	private function addMates()
