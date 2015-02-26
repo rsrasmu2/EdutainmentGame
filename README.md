@@ -20,7 +20,6 @@ TASKS:
 - Optional: "What is your name?" store and use in dialogue
 
 ----Overworld:
-- Graphic to show who you can fight currently (thought bubble, or '!')
 - Cannot fight people again *if you win*
 - fix dialogue boxes to stay on screen and not block character (move to bottom?)
 - display 5 math questions per student
@@ -59,6 +58,7 @@ COMPLETE:
 - display math questions one at a time -Al, DONE
 - test to see if the player was correct - Al, DONE
 - player health increases once fight is won -Bobby, DONE
+- Graphic to show who you can fight currently (thought bubble, or '!') -Bobby, DONE
 
 DESERTED TASKS:
 ---------------
