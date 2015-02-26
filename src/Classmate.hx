@@ -19,8 +19,8 @@ class Classmate extends Sprite
 		state.x = 0;
 
 		var me = new Image(Root.assets.getTexture(texStr));
-		me.width = 25;
-		me.height = 26;
+		me.scaleX = 2;
+		me.scaleY = 2;
 		me.smoothing = "none";
 		addChild(me);
 	}
