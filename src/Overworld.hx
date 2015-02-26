@@ -17,7 +17,8 @@ class Overworld extends Sprite
 
 		var classRoom = new Image(Root.assets.getTexture("classroom"));
 		classRoom.scaleX = row*GRID_SIZE/212;
-		classRoom.scaleY = col*GRID_SIZE/266;
+		classRoom.scaleY = col * GRID_SIZE / 266;
+		classRoom.smoothing = "none";
 		addChild(classRoom);
 
 		quad = new Quad(
