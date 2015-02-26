@@ -156,34 +156,34 @@ class Player extends Sprite
 	private function movieSetUp() {
 		
 		playerFront = new Image(Root.assets.getTexture("b_front"));
-		playerFront.width = 25;
-		playerFront.height = 26;
+		playerFront.scaleX = 2;
+		playerFront.scaleY = 2;
 		playerFront.smoothing = "none";
 		playerBack = new Image(Root.assets.getTexture("b_back")); 
-		playerBack.width = 25;
-		playerBack.height = 26;
+		playerBack.scaleX = 2;
+		playerBack.scaleY = 2;
 		playerBack.smoothing = "none";
 		playerLeft = new Image(Root.assets.getTexture("b_left_1")); 
-		playerLeft.width = 23;
-		playerLeft.height = 27;
+		playerLeft.scaleX = 2;
+		playerLeft.scaleY = 2;
 		playerLeft.smoothing = "none";
 		playerRight = new Image(Root.assets.getTexture("b_right_1")); 
-		playerRight.width = 23;
-		playerRight.height = 27;
+		playerRight.scaleX = 2;
+		playerRight.scaleY = 2;
 		playerRight.smoothing = "none";
 				
 		animateUp = new MovieClip(Root.assets.getTextures("b_back"), 4);
-		animateUp.width = 25;
-		animateUp.height = 26;
+		animateUp.scaleX = 2;
+		animateUp.scaleY = 2;
 		animateDown = new MovieClip(Root.assets.getTextures("b_front"), 4);
-		animateDown.width = 25;
-		animateDown.height = 26;
+		animateDown.scaleX = 2;
+		animateDown.scaleY = 2;
 		animateLeft = new MovieClip(Root.assets.getTextures("b_left_"), 4);
-		animateLeft.width = 23;
-		animateLeft.height = 27;
+		animateLeft.scaleX = 2;
+		animateLeft.scaleY = 2;
 		animateRight = new MovieClip(Root.assets.getTextures("b_right_"), 4);
-		animateRight.width = 23;
-		animateRight.height = 27;
+		animateRight.scaleX = 2;
+		animateRight.scaleY = 2;
 	}
 	
 	private function removeStatic() {
