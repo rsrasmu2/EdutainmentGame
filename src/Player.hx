@@ -131,7 +131,7 @@ class Player extends Sprite
 				Starling.juggler.add(animateRight);
 			default: return;
 		}
-		Starling.juggler.tween(this, 0.1,
+		Starling.juggler.tween(this, 0.2,
 		{
 			transition: Transitions.LINEAR,
 			x: xPos, y : yPos,
@@ -163,6 +163,7 @@ class Player extends Sprite
 		playerFront.scaleY = 2;
 		playerFront.smoothing = "none";
 
+		/*
 		playerBack = new Image(Root.assets.getTexture("b_back"));
 		playerBack.width = 25;
 		playerBack.height = 26;
@@ -177,6 +178,7 @@ class Player extends Sprite
 		playerRight.width = 23;
 		playerRight.height = 27;
 		playerRight.smoothing = "none";
+		*/
 
 		playerBack = new Image(Root.assets.getTexture("b_back"));
 		playerBack.scaleX = 2;
