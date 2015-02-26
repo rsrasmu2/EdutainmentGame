@@ -7,7 +7,7 @@ import starling.text.*;
 class Root extends Sprite {
 
 	public static var assets: AssetManager;
-	
+
 	public function new() {
 		super();
 	}
@@ -18,6 +18,8 @@ class Root extends Sprite {
 		assets.enqueue("assets/sprites.png", "assets/sprites.xml");
 		assets.enqueue("assets/classroom.png");
 		assets.enqueue("assets/bubble.png");
+		assets.enqueue("assets/Edutainment.mp3");
+		assets.enqueue("assets/Edutainment2.mp3");
 		assets.loadQueue(function onProgress(ratio:Float) {
 			if (ratio == 1) {
 				// fade the loading screen, start game
