@@ -200,7 +200,7 @@ class StateInput extends TextField
 {
 	public function new()
 	{
-		super(50,50,"","Flipps",20,0xffffff);
+		super(50,50,"","Fipps",20,0xffffff);
 		addEventListener(Event.ADDED, function()
 		{
 			x = -width/2;

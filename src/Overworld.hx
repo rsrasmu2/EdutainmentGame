@@ -35,6 +35,13 @@ class Overworld extends Sprite
 		addDesks();
 		addMates();
 
+		//block off front of the room
+		for(i in 0...row)
+		{
+			for(j in 0...3)
+			{	map[i][j] = 1;}
+		}
+
 		var p = addChild(new Player(this));
 		p.x = 1 * GRID_SIZE;
 		p.y = 15 * GRID_SIZE;
@@ -106,9 +113,9 @@ class Overworld extends Sprite
 		cast(me,BattleMate).setNextBattle(cast(mm,BattleMate));
 		cast(mm,BattleMate).setNextBattle(cast(mh,BattleMate));
 
-		var de = addMate(5,2,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, EASY, 5, true);
-		var dm = addMate(10,2,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, MEDIUM, 3, false);
-		var dh = addMate(13,2,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, HARD, 1, false);
+		var de = addMate(5,3,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, EASY, 5, true);
+		var dm = addMate(10,3,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, MEDIUM, 3, false);
+		var dh = addMate(13,3,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, HARD, 1, false);
 		cast(de,BattleMate).setNextBattle(cast(dm,BattleMate));
 		cast(dm,BattleMate).setNextBattle(cast(dh,BattleMate));
 
