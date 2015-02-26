@@ -27,7 +27,6 @@ class StateMachine extends Sprite
 		states = st;
 		space = sp;
 		total = st.length;
-		initCurrent();
 		makeBorder();
 
 		addEventListener(Event.ADDED_TO_STAGE, function()
@@ -38,7 +37,7 @@ class StateMachine extends Sprite
 				switch(e.keyCode)
 				{
 					case Keyboard.ENTER: action(CONFIRM);
-					case Keyboard.ESCAPE: action(BACK);
+					case Keyboard.SPACE: action(BACK);
 					case Keyboard.UP: action(UP);
 					case Keyboard.DOWN: action(DOWN);
 				}
@@ -72,6 +71,7 @@ class StateMachine extends Sprite
 			if(st.width > w) w = st.width;
 			h += st.height + space;
 		}
+		h -= space;
 		var quad = new Quad(w,h,0);
 		quad.x = -w/2;
 		addChild(quad);
@@ -148,7 +148,7 @@ class StateMachine extends Sprite
 		{
 			if(Std.is(st, StateInput))
 			{
-				return Std.int(st.text);
+				return Std.parseInt(st.text);
 				break;
 			}
 		}
@@ -218,6 +218,6 @@ class StateInput extends TextField
 		if(e.keyCode >= 48 && e.keyCode <= 57)
 			text += Std.string(e.keyCode-48);
 		else if(e.keyCode == Keyboard.BACKSPACE)
-			text = text.substring(0);
+			text = text.substring(0,text.length-1);
 	}
 }

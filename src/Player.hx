@@ -23,34 +23,36 @@ class Player extends Sprite
 	private var dirHeld : DIRECTION;
 	private var talking : Bool;
 	private var health : Health;
-	
+
 	private var playerFront: Image;
 	private var playerBack: Image;
 	private var playerLeft: Image;
 	private var playerRight: Image;
-	
+
 	private var animateUp:MovieClip;
 	private var animateDown:MovieClip;
 	private var animateLeft:MovieClip;
 	private var animateRight:MovieClip;
-	
+
 	public function new(st:Overworld)
 	{
 		super();
-		
+
 		world = st;
 		dirHeld = NONE;
-		
+
 		moving = false;
 
 		movieSetUp();
 		addChild(playerFront);
-		
-		health = {hitpoints : 50, text : new TextField(50,50,"50")};
-		addChild(health.text);
 
-		
-		
+		health = {hitpoints : 50, text : new TextField(100,50,"Health: 50","Fipps",20)};
+		addEventListener(Event.ADDED, function()
+		{
+			parent.addChild(health.text);
+			health.text.x = Starling.current.stage.stageWidth - health.text.width;
+		});
+
 		addEventListener(Event.ENTER_FRAME,
 		function(e:Event)
 		{
@@ -81,7 +83,7 @@ class Player extends Sprite
 			}
 		});
 	}
-	
+
 	private function move(d:DIRECTION)
 	{
 		if(moving || talking) return;
@@ -134,7 +136,8 @@ class Player extends Sprite
 			transition: Transitions.LINEAR,
 			x: xPos, y : yPos,
 			onComplete: function()
-			{	moving = false;
+			{
+				moving = false;
 				removeChild(animateUp);
 				removeChild(animateDown);
 				removeChild(animateLeft);
@@ -150,28 +153,28 @@ class Player extends Sprite
 	{
 		health.hitpoints -= d;
 		if(health.hitpoints <= 0) Menu.menu.gameOver();
-		else health.text.text = Std.string(health.hitpoints);
+		else health.text.text = "Health: " + Std.string(health.hitpoints);
 	}
-	
+
 	private function movieSetUp() {
-		
+
 		playerFront = new Image(Root.assets.getTexture("b_front"));
 		playerFront.width = 25;
 		playerFront.height = 26;
 		playerFront.smoothing = "none";
-		playerBack = new Image(Root.assets.getTexture("b_back")); 
+		playerBack = new Image(Root.assets.getTexture("b_back"));
 		playerBack.width = 25;
 		playerBack.height = 26;
 		playerBack.smoothing = "none";
-		playerLeft = new Image(Root.assets.getTexture("b_left_1")); 
+		playerLeft = new Image(Root.assets.getTexture("b_left_1"));
 		playerLeft.width = 23;
 		playerLeft.height = 27;
 		playerLeft.smoothing = "none";
-		playerRight = new Image(Root.assets.getTexture("b_right_1")); 
+		playerRight = new Image(Root.assets.getTexture("b_right_1"));
 		playerRight.width = 23;
 		playerRight.height = 27;
 		playerRight.smoothing = "none";
-				
+
 		animateUp = new MovieClip(Root.assets.getTextures("b_back"), 4);
 		animateUp.width = 25;
 		animateUp.height = 26;
@@ -185,13 +188,13 @@ class Player extends Sprite
 		animateRight.width = 23;
 		animateRight.height = 27;
 	}
-	
+
 	private function removeStatic() {
-		
+
 		removeChild(playerFront);
 		removeChild(playerBack);
 		removeChild(playerLeft);
 		removeChild(playerRight);
-		
+
 	}
 }

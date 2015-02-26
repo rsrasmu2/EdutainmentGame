@@ -54,18 +54,41 @@ class Overworld extends Sprite
 		addChild(new Player(this));
 
 		//this mate doesn't battle
-		addMate(5,5,["This is a test1","This is a test2","This is a test3"], "jordan_b");
+		addMate(3,3,["Welcome to Math RPG!",
+		"Talk to the students and answer their questions correctly.",
+		"After that, talk to the teacher and answer his questions to win the game!"],
+		"jordan_b");
 
 		//these ones does
-		addMate(10,0,["Can you beat me?", "Want to battle?"], PLUS, MEDIUM, "cherie_f");
-		addMate(10,5,["My skills are good", "Want to battle?"], MINUS, MEDIUM, "nancy_l");
-		addMate(10,10,["Think you're smarter?", "Want to battle?"], MULTIPLY, MEDIUM, "temi_f");
-		addMate(10,15,["Come at me bro!", "Want to battle?"], DIVIDE, MEDIUM, "rob_r");
+		addMate(5,0,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, EASY, 5);
+		addMate(10,0,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, MEDIUM, 3);
+		addMate(15,0,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, HARD, 1);
+
+		addMate(5,5,["My skills are good", "Want to battle?"], "nancy_l",MINUS, EASY, 5);
+		addMate(10,5,["My skills are good", "Want to battle?"], "nancy_l",MINUS, MEDIUM, 3);
+		addMate(15,5,["My skills are good", "Want to battle?"], "nancy_l",MINUS, HARD, 1);
+
+		addMate(5,10,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, EASY, 5);
+		addMate(10,10,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, MEDIUM, 3);
+		addMate(15,10,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, HARD, 1);
+
+		addMate(5,15,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, EASY, 5);
+		addMate(10,15,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, MEDIUM, 3);
+		addMate(15,15,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, HARD, 1);
+
+		var teacher = new Teacher(this);
+		teacher.setPosition(19, 10);
+		map[19][10] = 1;
+		classmates.push(teacher);
+		addChild(teacher);
 	}
 
-	private function addMate(xPos: UInt, yPos : UInt, s : Array<String>, ?op:OPERATION, ?diff:DIFFICULTY, ?mateTexture: String)
+	private function addMate(xPos: UInt, yPos : UInt, s : Array<String>,
+	mateTexture: String, ?op:OPERATION, ?diff:DIFFICULTY,  ?num : UInt)
 	{
-		var mate = (op == null || diff == null) ? new TalkMate(s, mateTexture) : new BattleMate(s,op,diff,mateTexture);
+		var mate = (op == null || diff == null || num == null)
+		? new TalkMate(s, mateTexture)
+		: new BattleMate(s,op,diff,mateTexture,num);
 		mate.setPosition(xPos,yPos);
 		map[xPos][yPos] = 1;
 		classmates.push(mate);
@@ -97,4 +120,15 @@ class Overworld extends Sprite
 		}
 		return false;
 	}
+
+	public function removeClassmate(c:Classmate)
+	{
+		var pos = c.getPosition();
+		map[pos.xPos][pos.yPos] = 0;
+		classmates.remove(c);
+		removeChild(c);
+	}
+
+	public function allClassmatesBeaten() : Bool
+	{	return classmates == [];}
 }
