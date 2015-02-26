@@ -17,26 +17,22 @@ TASKS:
 ------
 ----Misc:
 - "Are you a boy or a girl?" different sprite based on response - Nancy
-- Optional: "What is your name?" store and use in dialogue
 
 ----Overworld:
-- Cannot fight people again *if you win*
-- fix dialogue boxes to stay on screen and not block character (move to bottom?)
-- display 5 math questions per student
---- back row: increases 5 points, front row: increases 10 points, professor: increases 5 points (=100)
-- player health goes down if incorrect answer input, -Al
-- Optional: time limit on answering math questions, player loses health if time runs out
-- Optional: time limit is a bar on the screen
-- You win! Screen once you get your grade to 100%
+- move dialogue boxes to bottom?
+- block player from walking on the front wall
+- change battlemate to classmate after the fight ("aw, I lost")
+- fix math difficulty - Nancy
+- stop sprite repeats
+- You win! Screen once you get your grade to 100% after professor fight
+- Optional: Fix character animation clipping
 
 ASSETS:
 -------
 We are doing an 8-bit style!
-- classroom background - Cherie
-- Music - battle and overworld?
+- Music for overworld
 - Fight sounds
 - load screen - Nancy
-- thought bubble - Nancy
 
 COMPLETE:
 ---------
@@ -59,6 +55,12 @@ COMPLETE:
 - test to see if the player was correct - Al, DONE
 - player health increases once fight is won -Bobby, DONE
 - Graphic to show who you can fight currently (thought bubble, or '!') -Bobby, DONE
+- Cannot fight people again *if you win* - Al, DONE
+- Fixed dialogue boxes - Bobby, DONE
+- display 5 math questions per student - Al, DONE
+- thought bubble - Nancy, DONE
+- player health goes down if incorrect answer input, -Al, DONE
+- classroom background - Cherie, DONE
 
 DESERTED TASKS:
 ---------------
@@ -69,3 +71,6 @@ DESERTED TASKS:
 - Optional: save and load files?
 - allow the player to choose what type of math they are solving with a click menu at any time
 -- Default to addition
+- Optional: time limit on answering math questions, player loses health if time runs out
+- Optional: time limit is a bar on the screen
+- Optional: "What is your name?" store and use in dialogue
