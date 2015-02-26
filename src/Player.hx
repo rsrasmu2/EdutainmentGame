@@ -18,6 +18,8 @@ enum DIRECTION
 typedef Health = {hitpoints : Int, text : TextField}
 class Player extends Sprite
 {
+	public var currentDir : DIRECTION;
+
 	private var moving : Bool;
 	private var world : Overworld;
 	private var dirHeld : DIRECTION;
@@ -40,6 +42,7 @@ class Player extends Sprite
 
 		world = st;
 		dirHeld = NONE;
+		currentDir = NONE;
 
 		moving = false;
 
@@ -63,10 +66,10 @@ class Player extends Sprite
 		{
 			switch(e.keyCode)
 			{
-				case Keyboard.UP: dirHeld = UP;
-				case Keyboard.DOWN: dirHeld = DOWN;
-				case Keyboard.LEFT: dirHeld = LEFT;
-				case Keyboard.RIGHT: dirHeld = RIGHT;
+				case Keyboard.UP: dirHeld = UP; currentDir = UP;
+				case Keyboard.DOWN: dirHeld = DOWN; currentDir = DOWN;
+				case Keyboard.LEFT: dirHeld = LEFT; currentDir = LEFT;
+				case Keyboard.RIGHT: dirHeld = RIGHT; currentDir = RIGHT;
 				case Keyboard.ESCAPE: Menu.menu.reset();
 				case Keyboard.ENTER: talking = world.talkToClassmate(this);
 			}

@@ -164,17 +164,42 @@ class Overworld extends Sprite
 	//start dialogue if player is next to classmate
 	public function talkToClassmate(p:Player) : Bool
 	{
-		for(mate in classmates)
-		{
-			if((mate.x == p.x || mate.x == p.x-GRID_SIZE ||
-			mate.x == p.x+GRID_SIZE) && (mate.y == p.y ||
-			mate.y == p.y-GRID_SIZE || mate.y == p.y+GRID_SIZE))
-			{
-				mate.startDialogue(p);
-				return true;
-			}
+		switch (p.currentDir) {
+			case UP:
+				for (mate in classmates) {
+					if (mate.x == p.x && mate.y == p.y-GRID_SIZE) {
+						mate.startDialogue(p);
+						return true;
+					}
+				}
+				return false;
+			case DOWN:
+				for (mate in classmates) {
+					if (mate.x == p.x && mate.y == p.y+GRID_SIZE) {
+						mate.startDialogue(p);
+						return true;
+					}
+				}
+				return false;
+			case LEFT:
+				for (mate in classmates) {
+					if (mate.x == p.x-GRID_SIZE && mate.y == p.y) {
+						mate.startDialogue(p);
+						return true;
+					}
+				}
+				return false;
+			case RIGHT:
+				for (mate in classmates) {
+					if (mate.x == p.x+GRID_SIZE && mate.y == p.y) {
+						mate.startDialogue(p);
+						return true;
+					}
+				}
+				return false;
+			default:
+				return false;
 		}
-		return false;
 	}
 
 	public function removeClassmate(c:Classmate)
