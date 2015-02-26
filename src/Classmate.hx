@@ -66,8 +66,8 @@ class TalkMate extends Classmate
 		new StateButton("Next",setNext,endDialogue)],50), texStr);
 		currentIndex = 0;
 		var me = new Image(Root.assets.getTexture(textureString));
-		me.width = 25;
-		me.height = 26;
+		me.scaleX = 2;
+		me.scaleY = 2;
 		me.smoothing = "none";
 		//text = new TextField(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"C","Fipps",20);
 		addChild(me);
@@ -116,8 +116,8 @@ class BattleMate extends Classmate
 		operation = op;
 		difficulty = diff;
 		var me = new Image(Root.assets.getTexture(textureString));
-		me.width = 25;
-		me.height = 26;
+		me.scaleX = 2;
+		me.scaleY = 2;
 		me.smoothing = "none";
 		//text = new TextField(Overworld.GRID_SIZE,Overworld.GRID_SIZE,"C","Fipps",20);
 		addChild(me);
