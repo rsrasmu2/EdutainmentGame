@@ -131,8 +131,8 @@ class Overworld extends Sprite
 	mateTexture: String, ?op:OPERATION, ?diff:DIFFICULTY,  ?num : UInt)
 	{
 		var mate = (op == null || diff == null || num == null)
-		? new TalkMate(s, mateTexture)
-		: new BattleMate(s,op,diff,mateTexture,num);
+		? new TalkMate(s, mateTexture, this)
+		: new BattleMate(s,op,diff,mateTexture,num, this);
 		mate.setPosition(xPos,yPos);
 		map[xPos][yPos] = 1;
 		classmates.push(mate);

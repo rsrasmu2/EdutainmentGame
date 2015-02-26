@@ -9,14 +9,16 @@ class Classmate extends Sprite
 	private var dialogue : Array<String>;
 	private var state : StateMachine;
 	private var p : Player;
+	private var world : Overworld;
 
-	private function new(s:Array<String>, st:StateMachine, texStr: String)
+	private function new(s:Array<String>, st:StateMachine, texStr: String, world:Overworld)
 	{
 		super();
 		dialogue = s;
 		p = null;
 		state = st;
-		state.x = 0;
+		
+		this.world = world;
 
 		var me = new Image(Root.assets.getTexture(texStr));
 		me.scaleX = 2;
@@ -26,18 +28,18 @@ class Classmate extends Sprite
 	}
 
 	public function startDialogue(ply:Player)
-	{	addChild(state); p = ply;}
+	{	world.addChild(state); p = ply;}
 
 	private function nextDialogue(st:StateMachine)
 	{
-		removeChild(state);
-		state = st; state.x = 0;
-		addChild(state);
+		world.removeChild(state);
+		state = st;
+		world.addChild(state);
 	}
 
 	private function endDialogue()
 	{
-		removeChild(state);
+		world.removeChild(state);
 		if(p != null)
 		{
 			p.stopTalking();
@@ -68,11 +70,11 @@ class TalkMate extends Classmate
 {
 	private var currentIndex : Int;
 
-	public function new(s:Array<String>, texStr:String = "a_1")
+	public function new(s:Array<String>, texStr:String = "a_1", world:Overworld)
 	{
 		super(s, new StateMachine(
 		[new StateText(200,200,s[0]),
-		new StateButton("Next",setNext,endDialogue)],200), texStr);
+		new StateButton("Next",setNext,endDialogue)],200), texStr, world);
 		currentIndex = 0;
 	}
 
@@ -94,7 +96,6 @@ class TalkMate extends Classmate
 		state = new StateMachine(
 		[new StateText(200,200,dialogue[currentIndex]),
 		new StateButton("Next",setNext,endDialogue)],200);
-		state.x = 0;
 	}
 }
 
@@ -107,11 +108,11 @@ class BattleMate extends Classmate
 	private var curQuestion : UInt;
 	private var questionNum : UInt;
 
-	public function new(s:Array<String>, op:OPERATION, diff:DIFFICULTY, texStr: String = "a_1", qN : UInt = 1)
+	public function new(s:Array<String>, op:OPERATION, diff:DIFFICULTY, texStr: String = "a_1", qN : UInt = 1, world:Overworld)
 	{
 		super(s, new StateMachine(
 		[new StateText(175,50,s[0]),
-		new StateButton("Next",setNext,endDialogue)],50), texStr);
+		new StateButton("Next",setNext,endDialogue)],50), texStr, world);
 		currentIndex = curQuestion = 0; questionNum = qN;
 		operation = op;
 		difficulty = diff;
@@ -119,13 +120,12 @@ class BattleMate extends Classmate
 
 	private function battle()
 	{
-		removeChild(state);
+		world.removeChild(state);
 		state = new StateMachine(
 		[new StateText(175,50,dialogue[currentIndex]),
 		new StateButton("Yes",startBattle,endDialogue),
 		new StateButton("No", endDialogue, endDialogue)], 50);
-		state.x = 0;
-		addChild(state);
+		world.addChild(state);
 	}
 
 	private function setNext()
@@ -142,15 +142,14 @@ class BattleMate extends Classmate
 
 	private function startBattle()
 	{
-		removeChild(state);
+		world.removeChild(state);
 		ques = MathEngine.generateProblem(operation,difficulty);
 		state = new StateMachine(
 			[new StateText(125,50,ques.question),
 			new StateInput(),
 			new StateButton("Answer",checkAnswer,checkAnswer)],
 			50);
-		state.x = 0;
-		addChild(state);
+		world.addChild(state);
 	}
 
 	override private function resetDialogue()
@@ -159,13 +158,12 @@ class BattleMate extends Classmate
 		state = new StateMachine(
 		[new StateText(175,50,dialogue[currentIndex]),
 		new StateButton("Next",setNext,endDialogue)],50);
-		state.x = 0;
 	}
 
 	private function checkAnswer()
 	{
 		var ans = state.getAnswer();
-		removeChild(state);
+		world.removeChild(state);
 		var result = ques.answer == ans;
 
 		if(result)
@@ -203,13 +201,12 @@ class BattleMate extends Classmate
 				case HARD: 20;
 			});
 		}
-		addChild(state);
-		state.x = 0;
+		world.addChild(state);
 	}
 
 	override private function endDialogue()
 	{
-		removeChild(state);
+		world.removeChild(state);
 		p.stopTalking();
 		p = null;
 		resetDialogue();
@@ -224,18 +221,16 @@ class BattleMate extends Classmate
 
 class Teacher extends BattleMate
 {
-	private var world : Overworld;
 
-	public function new(w : Overworld)
+	public function new(world : Overworld)
 	{
-		super(["Challenge the teacher?"], PLUS, HARD, "rob_f", 20);
-		world = w;
+		super(["Challenge the teacher?"], PLUS, HARD, "rob_f", 20, world);
 	}
 
 	override private function checkAnswer()
 	{
 		var ans = state.getAnswer();
-		removeChild(state);
+		world.removeChild(state);
 		var result = ques.answer == ans;
 
 		if(result)
@@ -263,8 +258,7 @@ class Teacher extends BattleMate
 				50);
 			p.takeDamage(20);
 		}
-		addChild(state);
-		state.x = 0;
+		world.addChild(state);
 	}
 
 	private function randomOP() : OPERATION
@@ -280,7 +274,7 @@ class Teacher extends BattleMate
 
 	override private function battle()
 	{
-		removeChild(state);
+		world.removeChild(state);
 		state = new StateMachine((world.allClassmatesBeaten() ?
 		[new StateText(175,50,"Are you sure?"),
 		new StateButton("Yes",startBattle,endDialogue),
@@ -288,20 +282,18 @@ class Teacher extends BattleMate
 		[new StateText(200,50,"You must beat all the students before challenging me!"),
 		new StateButton("Next",endDialogue,endDialogue)])
 		,50);
-		state.x = 0;
-		addChild(state);
+		world.addChild(state);
 	}
 
 	override private function startBattle()
 	{
-		removeChild(state);
+		world.removeChild(state);
 		ques = MathEngine.generateProblem(randomOP(),HARD);
 		state = new StateMachine(
 			[new StateText(125,50,ques.question),
 			new StateInput(),
 			new StateButton("Answer",checkAnswer,checkAnswer)],
 			50);
-		state.x = 0;
-		addChild(state);
+		world.addChild(state);
 	}
 }
