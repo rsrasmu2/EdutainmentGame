@@ -95,7 +95,7 @@ class Menu extends Sprite
 				gameMusic.play(volume);
 				mainMusic.stop();
 				current = null;
-				addChild(new Overworld(15,18));
+				addChild(new Overworld(16,16));
 			case GAME_OVER:
 				current = gameover;
 			case GAME_END:
