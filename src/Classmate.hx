@@ -107,8 +107,12 @@ class BattleMate extends Classmate
 	private var currentIndex : Int;
 	private var curQuestion : UInt;
 	private var questionNum : UInt;
+	private var bubbleImage : Image;
+	private var canChallenge : Bool;
+	private var nextBattle : BattleMate;
 
-	public function new(s:Array<String>, op:OPERATION, diff:DIFFICULTY, texStr: String = "a_1", qN : UInt = 1, world:Overworld)
+	public function new(s:Array<String>, op:OPERATION, diff:DIFFICULTY, texStr: String = "a_1", qN : UInt = 1,
+	canChallenge:Bool, world:Overworld)
 	{
 		super(s, new StateMachine(
 		[new StateText(175,50,s[0]),
@@ -116,15 +120,28 @@ class BattleMate extends Classmate
 		currentIndex = curQuestion = 0; questionNum = qN;
 		operation = op;
 		difficulty = diff;
+		bubbleImage = new Image(Root.assets.getTexture("bubble"));
+		bubbleImage.x -= Overworld.GRID_SIZE;
+		bubbleImage.y -= Overworld.GRID_SIZE;
+		addChild(bubbleImage);
+		this.canChallenge = canChallenge;
+		this.canChallenge ? bubbleImage.visible = true : bubbleImage.visible = false;
 	}
 
 	private function battle()
 	{
 		world.removeChild(state);
-		state = new StateMachine(
-		[new StateText(175,50,dialogue[currentIndex]),
-		new StateButton("Yes",startBattle,endDialogue),
-		new StateButton("No", endDialogue, endDialogue)], 50);
+		if (canChallenge) {
+			state = new StateMachine(
+				[new StateText(175,50,dialogue[currentIndex]),
+				new StateButton("Yes",startBattle,endDialogue),
+				new StateButton("No", endDialogue, endDialogue)], 50);
+		} else {
+			state = new StateMachine(
+				[new StateText(175,50,"Not until you're stronger!"),
+				new StateButton("Next",endDialogue,endDialogue)],50);
+		}
+		
 		world.addChild(state);
 	}
 
@@ -215,8 +232,20 @@ class BattleMate extends Classmate
 	private function endPlayer()
 	{
 		p.levelUp(5);
+		if (nextBattle != null) {
+			nextBattle.enableChallenge();
+		}
 		endDialogue();
 		cast(parent, Overworld).removeClassmate(this);
+	}
+	
+	public function setNextBattle(bm : BattleMate) {
+		nextBattle = bm;
+	}
+	
+	public function enableChallenge() {
+		canChallenge = true;
+		bubbleImage.visible = true;
 	}
 }
 
@@ -225,7 +254,7 @@ class Teacher extends BattleMate
 
 	public function new(world : Overworld)
 	{
-		super(["Challenge the teacher?"], PLUS, HARD, "rob_f", 20, world);
+		super(["Challenge the teacher?"], PLUS, HARD, "rob_f", 20, false, world);
 	}
 
 	override private function checkAnswer()

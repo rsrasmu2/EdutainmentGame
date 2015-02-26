@@ -83,21 +83,29 @@ class Overworld extends Sprite
 		"jordan_b");
 
 		//these ones does
-		addMate(5,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, EASY, 5);
-		addMate(10,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, MEDIUM, 3);
-		addMate(13,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, HARD, 1);
+		var ae = addMate(5,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, EASY, 5, true);
+		var am = addMate(10,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, MEDIUM, 3, false);
+		var ah = addMate(13,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, HARD, 1, false);
+		cast(ae,BattleMate).setNextBattle(cast(am,BattleMate));
+		cast(am,BattleMate).setNextBattle(cast(ah,BattleMate));
 
-		addMate(5,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, EASY, 5);
-		addMate(10,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, MEDIUM, 3);
-		addMate(13,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, HARD, 1);
+		var se = addMate(5,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, EASY, 5, true);
+		var sm = addMate(10,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, MEDIUM, 3, false);
+		var sh = addMate(13,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, HARD, 1, false);
+		cast(se,BattleMate).setNextBattle(cast(sm,BattleMate));
+		cast(sm,BattleMate).setNextBattle(cast(sh,BattleMate));
 
-		addMate(5,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, EASY, 5);
-		addMate(10,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, MEDIUM, 3);
-		addMate(13,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, HARD, 1);
+		var me = addMate(5,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, EASY, 5, true);
+		var mm = addMate(10,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, MEDIUM, 3, false);
+		var mh = addMate(13,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, HARD, 1, false);
+		cast(me,BattleMate).setNextBattle(cast(mm,BattleMate));
+		cast(mm,BattleMate).setNextBattle(cast(mh,BattleMate));
 
-		addMate(5,2,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, EASY, 5);
-		addMate(10,2,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, MEDIUM, 3);
-		addMate(13,2,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, HARD, 1);
+		var de = addMate(5,2,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, EASY, 5, true);
+		var dm = addMate(10,2,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, MEDIUM, 3, false);
+		var dh = addMate(13,2,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, HARD, 1, false);
+		cast(de,BattleMate).setNextBattle(cast(dm,BattleMate));
+		cast(dm,BattleMate).setNextBattle(cast(dh,BattleMate));
 		
 		//these ones does
 		/*addMate(8, 0, ["Are you sure about this?", "Want to battle?"], MULTIPLY, HARD, "prof");
@@ -130,15 +138,16 @@ class Overworld extends Sprite
 	}
 
 	private function addMate(xPos: UInt, yPos : UInt, s : Array<String>,
-	mateTexture: String, ?op:OPERATION, ?diff:DIFFICULTY,  ?num : UInt)
+	mateTexture: String, ?op:OPERATION, ?diff:DIFFICULTY,  ?num : UInt, ?canChallenge : Bool) : Classmate
 	{
-		var mate = (op == null || diff == null || num == null)
+		var mate = (op == null || diff == null || num == null || canChallenge == null)
 		? new TalkMate(s, mateTexture, this)
-		: new BattleMate(s,op,diff,mateTexture,num, this);
+		: new BattleMate(s,op,diff,mateTexture,num,canChallenge,this);
 		mate.setPosition(xPos,yPos);
 		map[xPos][yPos] = 1;
 		classmates.push(mate);
 		addChild(mate);
+		return mate;
 	}
 
 	private function addDesk(xPos: UInt, yPos: UInt, type: String) {
