@@ -101,8 +101,29 @@ class Player extends Sprite
 				xPos += Overworld.GRID_SIZE;
 			default: return;
 		}
-		if((xPos != x || yPos != y) && world.goodSpot(xPos,yPos))
-			tweenTo(xPos,yPos, d);
+		
+		if(xPos != x || yPos != y) {
+			if (world.goodSpot(xPos,yPos)) {
+				tweenTo(xPos,yPos, d);
+			} else {
+				//face the direction without moving
+				switch(d) {
+					case UP:
+						removeStatic();
+						addChild(playerBack);
+					case DOWN:
+						removeStatic();
+						addChild(playerFront);
+					case LEFT:
+						removeStatic();
+						addChild(playerLeft);
+					case RIGHT:
+						removeStatic();
+						addChild(playerRight);
+					default: return;
+				}
+			}
+		}
 	}
 
 	private function tweenTo(xPos : Float, yPos : Float, dir: DIRECTION)
