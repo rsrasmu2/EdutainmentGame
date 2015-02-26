@@ -16,14 +16,19 @@ class Overworld extends Sprite
 	{
 		super();
 
-		addChild(new Image(Root.assets.getTexture("classroom")));
+		var classRoom = new Image(Root.assets.getTexture("classroom"));
+		classRoom.scaleX = 2;
+		classRoom.scaleY = 2;
+		classRoom.x = -classRoom.width / 4;
+		classRoom.y = -classRoom.height / 4;
+		addChild(classRoom);
 
 		quad = new Quad(
 			row == null ? Starling.current.stage.stageWidth : row*GRID_SIZE,
 			col == null ? Starling.current.stage.stageHeight : col*GRID_SIZE,0xdddddd
 		);
 
-		quad.alpha = 0.75;
+		quad.alpha = 0;
 		addChild(quad);
 
 		createGrid(quad);
