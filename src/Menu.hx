@@ -172,7 +172,7 @@ class GameMusic extends Sprite
 			if(!channel.hasEventListener(flash.events.Event.SOUND_COMPLETE))
 			{
 				channel.addEventListener(flash.events.Event.SOUND_COMPLETE,
-				function(e:Event)
+				function(e:flash.events.Event)
 				{
 					isPlaying = false;
 					play(vol);
