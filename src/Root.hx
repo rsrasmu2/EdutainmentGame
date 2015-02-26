@@ -16,6 +16,7 @@ class Root extends Sprite {
 		assets = new AssetManager();
 		assets.enqueue("assets/BittyFont.fnt", "assets/BittyFont.png");
 		assets.enqueue("assets/sprites.png", "assets/sprites.xml");
+		assets.enqueue("assets/classroom.png");
 		assets.loadQueue(function onProgress(ratio:Float) {
 			if (ratio == 1) {
 				// fade the loading screen, start game

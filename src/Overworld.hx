@@ -2,6 +2,7 @@ import starling.display.*;
 import starling.core.Starling;
 import MathEngine;
 import Classmate;
+import starling.textures.Texture;
 
 class Overworld extends Sprite
 {
@@ -13,6 +14,8 @@ class Overworld extends Sprite
 	public function new(?row:UInt, ?col:UInt)
 	{
 		super();
+
+		addChild(new Image(Root.assets.getTexture("classroom")));
 
 		quad = new Quad(
 		row == null ? Starling.current.stage.stageWidth : row*GRID_SIZE,
