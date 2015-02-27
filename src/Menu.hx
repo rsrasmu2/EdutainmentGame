@@ -24,6 +24,7 @@ class Menu extends Sprite
 	private var cred : StateMachine;
 	private var gameover : StateMachine;
 	private var gameend : StateMachine;
+	private var bg:Background;
 
 	private var mainMusic : GameMusic;
 	private var gameMusic : GameMusic;
@@ -44,6 +45,9 @@ class Menu extends Sprite
 		super();
 		menu = this;
 
+		bg = new Background();
+		addChild(bg);
+		
 		volume = 0.5;
 		mainMusic = new GameMusic("Edutainment",this);
 		gameMusic = new GameMusic("Edutainment2",this);
@@ -80,7 +84,7 @@ class Menu extends Sprite
 
 	private function setMenu(m:MENU_TYPE)
 	{
-		removeChildren(2);
+		removeChildren(1);
 		switch(m)
 		{
 			case MAIN:

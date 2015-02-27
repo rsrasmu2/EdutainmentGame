@@ -20,6 +20,7 @@ class Root extends Sprite {
 		assets.enqueue("assets/bubble.png");
 		assets.enqueue("assets/Edutainment.mp3");
 		assets.enqueue("assets/Edutainment2.mp3");
+		assets.enqueue("assets/bg.png");
 		assets.loadQueue(function onProgress(ratio:Float) {
 			if (ratio == 1) {
 				// fade the loading screen, start game
