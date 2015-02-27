@@ -21,7 +21,6 @@ TASKS:
 ----Overworld:
 - Improve you win screen - add "A+!" or something maybe
 - make speech bubbles above player so you can't walk over them
-- different intro text for each person
 - Optional: move dialogue boxes to bottom?
 - Optional: Fix character animation clipping
 - Optional: loser text "aw, I lost"
@@ -64,6 +63,7 @@ COMPLETE:
 - Optional: User input is in our bitmap font -Al, Done
 - fix instructions screen so that all instructions show, -Al
 - fix background parallax on menu, -Al
+- different intro text for each person - nancy, DONE
 
 DESERTED TASKS:
 ---------------
