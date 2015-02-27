@@ -19,10 +19,16 @@ TASKS:
 - "Are you a boy or a girl?" different sprite based on response - Nancy
 
 ----Overworld:
-- move dialogue boxes to bottom?
-- You win! Screen once you get your grade to 100% after professor fight
-- Optional: Fix character animation clipping
+- Improve you win screen - add "A+!" or something maybe
+- make speech bubbles above player so you can't walk over them
+- fix instructions screen so that all instructions show
 - fix background parallax on menu (probably a removeChildren problem?)
+- different intro text for each person
+- Optional: move dialogue boxes to bottom?
+- Optional: Fix character animation clipping
+- Optional: loser text "aw, I lost"
+- Optional: roaming characters
+- Optional: characters turn to you when you talk to them
 
 COMPLETE:
 ---------
