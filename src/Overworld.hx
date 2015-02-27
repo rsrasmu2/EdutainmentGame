@@ -2,6 +2,7 @@ import starling.display.*;
 import starling.core.Starling;
 import MathEngine;
 import Classmate;
+import Math.*;
 
 class Overworld extends Sprite
 {
@@ -121,6 +122,8 @@ class Overworld extends Sprite
 		map[8][2] = 1;
 		classmates.push(teacher);
 		addChild(teacher);
+		
+		randomTurn();
 	}
 
 	private function addMate(xPos: UInt, yPos : UInt, s : Array<String>,
@@ -218,6 +221,19 @@ class Overworld extends Sprite
 		}
 	}
 
+	public function randomTurn() {
+		// animate a random student
+		var index = ceil(random() * (classmates.length - 1) );
+		if (classmates[index].myTexture == "prof") { randomTurn(); }
+		else { classmates[index].updateTexture(); }
+	
+		Starling.juggler.tween(classmates[index], 1.0, {
+				delay:2, onComplete: function() {
+					randomTurn();
+				}
+			});
+	}
+	
 	public function allClassmatesBeaten() : Bool
 	{
 		for(mate in classmates)

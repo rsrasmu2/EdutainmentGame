@@ -3,16 +3,19 @@ import starling.text.TextField;
 import StateMachine;
 import MathEngine;
 import starling.display.Image;
+import Math.*;
 
 class Classmate extends Sprite
 {
 	public var me :Image;
+	public var me2 : Image;
 	private var dialogue : Array<String>;
 	private var state : StateMachine;
 	private var p : Player;
 	private var world : Overworld;
 	public var myTexture: String;
-
+	public var myTexture2: String;
+	
 	private function new(s:Array<String>, st:StateMachine, texStr: String, world:Overworld)
 	{
 		super();
@@ -28,8 +31,37 @@ class Classmate extends Sprite
 		me.scaleY = 2;
 		me.smoothing = "none";
 		addChild(me);
+		decideMe();
+		me.visible = true;
+
 	}
 
+	private function decideMe() {
+		if (myTexture == "prof") { return; }
+		var dirNum = ceil(random() * 3);
+		var dir: String;
+		switch (dirNum) {
+			case 0:
+				dir = 'r';
+			case 1:
+				dir = 'f';
+			case 2:
+				dir = 'b';
+			case 3:
+				dir = 'l';
+			default: 
+				dir = 'l';
+		}
+		var splitStr = myTexture.split("_");
+		myTexture2 = splitStr[0] + "_" + dir;
+		me2 = new Image(Root.assets.getTexture(splitStr[0] + "_" + dir));
+		me2.scaleX = 2;
+		me2.scaleY = 2;
+		me2.smoothing = "none";
+		addChild(me2);
+		me2.visible = false;
+	}
+	
 	public function startDialogue(ply:Player)
 	{	world.addChild(state); p = ply;}
 
@@ -64,10 +96,19 @@ class Classmate extends Sprite
 	{
 		return {xPos : Std.int(x / Overworld.GRID_SIZE), yPos : Std.int(y / Overworld.GRID_SIZE)};
 	}
+	
+	public function updateTexture() {
+		if (me.visible == true) {
+			me.visible = false;
+			me2.visible = true;
+		}
+		else {
+			me2.visible = false;
+			me.visible = true;
+		}
+		
+	}
 }
-
-
-
 
 class TalkMate extends Classmate
 {
