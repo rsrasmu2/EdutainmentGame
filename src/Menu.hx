@@ -96,6 +96,7 @@ class Menu extends Sprite
 			case CREDITS:
 				current = cred;
 			case OVERWORLD:
+				removeChild(bg);
 				gameMusic.play(volume);
 				mainMusic.stop();
 				current = null;
@@ -115,7 +116,7 @@ class Menu extends Sprite
 	{	setMenu(GAME_END);}
 
 	public function reset()
-	{	setMenu(MAIN);}
+	{	addChildAt(bg,0);setMenu(MAIN);}
 
 	public function incVol(chn : SoundChannel)
 	{

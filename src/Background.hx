@@ -30,6 +30,8 @@ class Background extends Sprite
 		addChild(image1);
 		addChild(image2);
 
+		image1.scaleX = image1.scaleY = 640/512;
+		image2.scaleX = image2.scaleY = 640/512;
 		image1.y = 0;
 		image2.y = image1.height;
 		imageHeight = image1.height;
