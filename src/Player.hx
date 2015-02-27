@@ -50,7 +50,7 @@ class Player extends Sprite
 		movieSetUp();
 		addChild(playerFront);
 
-		maxHealth = 50;
+		maxHealth = 40;
 		health = {hitpoints : maxHealth, text : new TextField(100,50,"Health: " + maxHealth,"Fipps",20)};
 		addEventListener(Event.ADDED, function()
 		{
