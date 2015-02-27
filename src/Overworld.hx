@@ -37,7 +37,7 @@ class Overworld extends Sprite
 		//block off front of the room
 		for(i in 0...row)
 		{
-			for(j in 0...3)
+			for(j in 0...2)
 			{	map[i][j] = 1;}
 		}
 

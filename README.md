@@ -19,7 +19,6 @@ TASKS:
 - "Are you a boy or a girl?" different sprite based on response - Nancy
 
 ----Overworld:
-- Improve you win screen - add "A+!" or something maybe
 - make speech bubbles above player so you can't walk over them
 - Optional: move dialogue boxes to bottom?
 - Optional: Fix character animation clipping
@@ -63,7 +62,8 @@ COMPLETE:
 - Optional: User input is in our bitmap font -Al, Done
 - fix instructions screen so that all instructions show, -Al
 - fix background parallax on menu, -Al
-- different intro text for each person - nancy, DONE
+- different intro text for each person - Nancy, DONE
+- Improve you win screen - add "A+!" or something maybe - Nancy, DONE
 
 DESERTED TASKS:
 ---------------
