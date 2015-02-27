@@ -15,14 +15,10 @@ CONCEPT OVERVIEW:
 
 TASKS:
 ------
-----Misc:
-- "Are you a boy or a girl?" different sprite based on response - Nancy
-
 ----Overworld:
 - make speech bubbles above player so you can't walk over them
 - Optional: move dialogue boxes to bottom?
 - Optional: Fix character animation clipping
-- Optional: roaming characters
 - Optional: characters turn to you when you talk to them
 
 COMPLETE:
@@ -64,6 +60,7 @@ COMPLETE:
 - different intro text for each person - Nancy, DONE
 - Improve you win screen - add "A+!" or something maybe - Nancy, DONE
 - Optional: loser text "aw, I lost" - Nancy, DONE
+- Optional: roaming characters - Nancy, DONE
 
 DESERTED TASKS:
 ---------------
@@ -77,3 +74,4 @@ DESERTED TASKS:
 - Optional: time limit on answering math questions, player loses health if time runs out
 - Optional: time limit is a bar on the screen
 - Optional: "What is your name?" store and use in dialogue
+- "Are you a boy or a girl?" different sprite based on response 
