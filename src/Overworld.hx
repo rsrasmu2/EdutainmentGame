@@ -90,26 +90,26 @@ class Overworld extends Sprite
 		"jordan_b");*/
 
 		//these ones does
-		var ae = addMate(3,12,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, EASY, 5, true);
-		var am = addMate(3,8,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, MEDIUM, 3, false);
+		var ae = addMate(3,12,["Can you beat me?", "Want to battle?"], "punk_f",PLUS, EASY, 5, true);
+		var am = addMate(3,8,["Can you beat me?", "Want to battle?"], "temi_b",PLUS, MEDIUM, 3, false);
 		var ah = addMate(3,5,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, HARD, 1, false);
 		cast(ae,BattleMate).setNextBattle(cast(am,BattleMate));
 		cast(am,BattleMate).setNextBattle(cast(ah,BattleMate));
 
-		var se = addMate(6,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, EASY, 5, true);
-		var sm = addMate(6,8,["My skills are good", "Want to battle?"], "nancy_l",MINUS, MEDIUM, 3, false);
+		var se = addMate(6,12,["My skills are good", "Want to battle?"], "blonde_l",MINUS, EASY, 5, true);
+		var sm = addMate(6,8,["My skills are good", "Want to battle?"], "boy_r",MINUS, MEDIUM, 3, false);
 		var sh = addMate(6,5,["My skills are good", "Want to battle?"], "nancy_l",MINUS, HARD, 1, false);
 		cast(se,BattleMate).setNextBattle(cast(sm,BattleMate));
 		cast(sm,BattleMate).setNextBattle(cast(sh,BattleMate));
 
-		var me = addMate(10,12,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, EASY, 5, true);
-		var mm = addMate(10,8,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, MEDIUM, 3, false);
+		var me = addMate(10,12,["Think you're smarter?", "Want to battle?"], "boy_b", MULTIPLY, EASY, 5, true);
+		var mm = addMate(10,8,["Think you're smarter?", "Want to battle?"], "girl_l", MULTIPLY, MEDIUM, 3, false);
 		var mh = addMate(10,5,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, HARD, 1, false);
 		cast(me,BattleMate).setNextBattle(cast(mm,BattleMate));
 		cast(mm,BattleMate).setNextBattle(cast(mh,BattleMate));
 
-		var de = addMate(13,12,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, EASY, 5, true);
-		var dm = addMate(13,8,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, MEDIUM, 3, false);
+		var de = addMate(13,12,["Come at me bro!", "Want to battle?"], "girl_b", DIVIDE, EASY, 5, true);
+		var dm = addMate(13,8,["Come at me bro!", "Want to battle?"], "nancy_f", DIVIDE, MEDIUM, 3, false);
 		var dh = addMate(13,5,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, HARD, 1, false);
 		cast(de,BattleMate).setNextBattle(cast(dm,BattleMate));
 		cast(dm,BattleMate).setNextBattle(cast(dh,BattleMate));
