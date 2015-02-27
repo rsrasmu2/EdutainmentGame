@@ -9,6 +9,7 @@ class Overworld extends Sprite
 	private var classmates : Array<Classmate>;
 	private var desks : Array<Image>;
 	private var quad : Quad;
+	private var teacher : Teacher;
 	public inline static var GRID_SIZE = 32;
 
 	public function new(?row:UInt, ?col:UInt)
@@ -114,7 +115,7 @@ class Overworld extends Sprite
 		cast(de,BattleMate).setNextBattle(cast(dm,BattleMate));
 		cast(dm,BattleMate).setNextBattle(cast(dh,BattleMate));
 
-		var teacher = new Teacher(this);
+		teacher = new Teacher(this);
 		teacher.setPosition(8, 2);
 		map[8][2] = 1;
 		classmates.push(teacher);
@@ -213,6 +214,10 @@ class Overworld extends Sprite
 		Image.x = x;
 		Image.y = y;
 		addChild(Image);
+
+		if (allClassmatesBeaten()) {
+			teacher.enableChallenge();
+		}
 	}
 
 	public function allClassmatesBeaten() : Bool
