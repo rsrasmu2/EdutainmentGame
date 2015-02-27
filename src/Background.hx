@@ -1,7 +1,5 @@
 import starling.display.Image;
 import starling.display.Sprite;
-import starling.utils.AssetManager;
-import starling.core.Starling;
 
 import starling.events.Event;
 /**
@@ -11,7 +9,6 @@ import starling.events.Event;
 class Background extends Sprite
 {
 	var parallax: Float;
-	var imageHeight: Float;
 	var image1: Image;
 	var image2: Image;
 
@@ -21,8 +18,8 @@ class Background extends Sprite
 		this.addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 	}
 
-	public function onAddedToStage(event:Event):Void {
-
+	private function onAddedToStage(event:Event):Void
+	{
 		this.removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 
 		image1 = new Image(Root.assets.getTexture("bg"));
@@ -32,9 +29,13 @@ class Background extends Sprite
 
 		image1.scaleX = image1.scaleY = 640/512;
 		image2.scaleX = image2.scaleY = 640/512;
+
+		/*parallax scrolling?
 		image1.y = 0;
-		image2.y = image1.height;
-		imageHeight = image1.height;
+		image2.y = image1.height;*/
+
+		//regular scrolling
+		image2.x = image1.width;
 
 		parallax = .2;
 
@@ -42,11 +43,20 @@ class Background extends Sprite
 
 	}
 
-	public function onEnterFrame(event:Event):Void {
-
+	private function onEnterFrame(event:Event):Void
+	{
+		/*parallax scrolling?
 		image1.y -= parallax;
-		if (image1.y < -imageHeight) {
-			image1.y = 0;
+		if (image1.y < -image1.height)
+			image1.y = 0;*/
+
+		//regular scrolling
+		image1.x -= parallax;
+		image2.x -= parallax;
+		if(image1.x < -image1.width)
+		{
+			image1.x = 0;
+			image2.x = image1.width;
 		}
 	}
 

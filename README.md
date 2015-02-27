@@ -21,8 +21,6 @@ TASKS:
 ----Overworld:
 - Improve you win screen - add "A+!" or something maybe
 - make speech bubbles above player so you can't walk over them
-- fix instructions screen so that all instructions show
-- fix background parallax on menu (probably a removeChildren problem?)
 - different intro text for each person
 - Optional: move dialogue boxes to bottom?
 - Optional: Fix character animation clipping
@@ -64,6 +62,8 @@ COMPLETE:
 - fix math difficulty - Nancy, DONE
 - block player from walking on the front wall - Cherie, DONE
 - Optional: User input is in our bitmap font -Al, Done
+- fix instructions screen so that all instructions show, -Al
+- fix background parallax on menu, -Al
 
 DESERTED TASKS:
 ---------------

@@ -31,9 +31,9 @@ class Menu extends Sprite
 	private var volume : Float;
 
 	private inline static var creditsText =
-	"Credits\nTemitope Alaga\nJordan Harris\nNancy McCollough\nCherie Parsons\nRobert Rasmussen";
+	"Temitope Alaga\nJordan Harris\nNancy McCollough\nCherie Parsons\nRobert Rasmussen";
 	private inline static var instructionsText =
-	"You are a student that is failing math class. "+
+	"Instructions\n-----------\nYou are a student that is failing math class. "+
 	"Challenge your classmates to math battles and improve! "+
 	"You must answer all their questions correctly if you want your grade to go up. "+
 	"The students in the back are easier, and the students in the front are harder. "+
@@ -60,24 +60,28 @@ class Menu extends Sprite
 			new StateButton("Instructions", function(){setMenu(INSTRUCTIONS);}),
 			new StateButton("Credits", function(){setMenu(CREDITS);})]);
 
-		instr = new StateMachine(
-			[new StateText(200,100,"Instructions\n-----------"),
-			new StateText(200,100,instructionsText),
-			new StateButton("Back", function(){setMenu(MAIN);},function(){setMenu(MAIN);})]);
+		main.y = Starling.current.stage.stageHeight/2 - main.height/2;
 
+		instr = new StateMachine(
+			[new StateText(600,200,instructionsText),
+			new StateButton("Back", function(){setMenu(MAIN);},function(){setMenu(MAIN);})],300);
+		instr.y = Starling.current.stage.stageHeight/2 - instr.height/2;
 
 		cred = new StateMachine(
 			[new StateText(200,100,"Credits\n----------"),
 			new StateText(200,100,creditsText),
 			new StateButton("Back", function(){setMenu(MAIN);},function(){setMenu(MAIN);})]);
+		cred.y = Starling.current.stage.stageHeight/2 - cred.height/2;
 
 		gameover = new StateMachine(
 			[new StateText(200,100,"Game Over"),
 			new StateButton("Go back to Main Menu", function(){setMenu(MAIN);},function(){setMenu(MAIN);})]);
+		gameover.y = Starling.current.stage.stageHeight/2 - gameover.height/2;
 
 		gameend = new StateMachine(
 			[new StateText(200,100,"You have completed the game!!!"),
 			new StateButton("Go back to Main Menu", function(){setMenu(MAIN);},function(){setMenu(MAIN);})]);
+		gameend.y = Starling.current.stage.stageHeight/2 - gameend.height/2;
 
 		setMenu(MAIN);
 	}
