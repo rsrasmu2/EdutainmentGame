@@ -63,7 +63,7 @@ class Menu extends Sprite
 		main.y = Starling.current.stage.stageHeight/2 - main.height/2;
 
 		instr = new StateMachine(
-			[new StateText(600,200,instructionsText),
+			[new StateText(450,300,instructionsText),
 			new StateButton("Back", function(){setMenu(MAIN);},function(){setMenu(MAIN);})],300);
 		instr.y = Starling.current.stage.stageHeight/2 - instr.height/2;
 
@@ -120,7 +120,11 @@ class Menu extends Sprite
 	{	setMenu(GAME_END);}
 
 	public function reset()
-	{	addChildAt(bg,0);setMenu(MAIN);}
+	{	
+		//removeChild(
+		addChildAt(bg,0);setMenu(MAIN);
+		
+	}
 
 	public function incVol(chn : SoundChannel)
 	{
