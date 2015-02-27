@@ -11,7 +11,8 @@ class Classmate extends Sprite
 	private var state : StateMachine;
 	private var p : Player;
 	private var world : Overworld;
-
+	public var myTexture: String;
+	
 	private function new(s:Array<String>, st:StateMachine, texStr: String, world:Overworld)
 	{
 		super();
@@ -21,6 +22,7 @@ class Classmate extends Sprite
 		
 		this.world = world;
 
+		myTexture = texStr;
 		me = new Image(Root.assets.getTexture(texStr));
 		me.scaleX = 2;
 		me.scaleY = 2;

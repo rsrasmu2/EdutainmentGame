@@ -22,7 +22,6 @@ TASKS:
 - make speech bubbles above player so you can't walk over them
 - Optional: move dialogue boxes to bottom?
 - Optional: Fix character animation clipping
-- Optional: loser text "aw, I lost"
 - Optional: roaming characters
 - Optional: characters turn to you when you talk to them
 
@@ -64,6 +63,7 @@ COMPLETE:
 - fix background parallax on menu, -Al
 - different intro text for each person - Nancy, DONE
 - Improve you win screen - add "A+!" or something maybe - Nancy, DONE
+- Optional: loser text "aw, I lost" - Nancy, DONE
 
 DESERTED TASKS:
 ---------------

@@ -207,14 +207,11 @@ class Overworld extends Sprite
 	public function removeClassmate(c:Classmate)
 	{
 		var pos = c.getPosition();
-		var x = c.x;
-		var y = c.y;
+		var x = pos.xPos;
+		var y = pos.yPos;
 		classmates.remove(c);
 		removeChild(c);
-		var Image = c.me;
-		Image.x = x;
-		Image.y = y;
-		addChild(Image);
+		addMate(x, y, ["Aw, I lost."], c.myTexture);
 
 		if (allClassmatesBeaten()) {
 			teacher.enableChallenge();
