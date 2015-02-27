@@ -86,7 +86,7 @@ class Overworld extends Sprite
 		desks = new Array();
 
 		//this mate doesn't battle
-		addMate(6,14,["Welcome to Math RPG!",
+		addMate(6,14,["Welcome to Mathsters!",
 		"Talk to the students and answer their questions correctly.",
 		"After that, talk to the teacher and answer his questions to win the game!"],
 		"jordan_b");

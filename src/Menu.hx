@@ -47,7 +47,7 @@ class Menu extends Sprite
 
 		bg = new Background();
 		addChild(bg);
-		
+
 		volume = 0.5;
 		mainMusic = new GameMusic("Edutainment",this);
 		gameMusic = new GameMusic("Edutainment2",this);
@@ -55,7 +55,7 @@ class Menu extends Sprite
 		addChild(gameMusic);
 
 		main = new StateMachine(
-			[new StateText(200,100,"Math RPG"),
+			[new StateText(200,100,"Mathsters"),
 			new StateButton("Play", function(){setMenu(OVERWORLD);}),
 			new StateButton("Instructions", function(){setMenu(INSTRUCTIONS);}),
 			new StateButton("Credits", function(){setMenu(CREDITS);})]);
@@ -84,7 +84,7 @@ class Menu extends Sprite
 
 	private function setMenu(m:MENU_TYPE)
 	{
-		removeChildren(1);
+		removeChildren(3);
 		switch(m)
 		{
 			case MAIN:
