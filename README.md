@@ -20,17 +20,14 @@ TASKS:
 
 ----Overworld:
 - move dialogue boxes to bottom?
-- change battlemate to classmate after the fight ("aw, I lost")
-- stop sprite repeats
 - You win! Screen once you get your grade to 100% after professor fight
 - Optional: Fix character animation clipping
 
-ASSETS:
--------
-- load screen - Cherie
-
 COMPLETE:
 ---------
+- sprites dont disappear when defeated, just no dialogue - Cherie, DONE
+- stop sprite repeats - Rob, Done
+- load screen - Cherie, DONE
 - State machine menus - Al, DONE
 - 8 bit bitmap font - Cherie, DONE
 - collision detection! -Al, DONE

@@ -6,6 +6,7 @@ import starling.display.Image;
 
 class Classmate extends Sprite
 {
+	public var me :Image;
 	private var dialogue : Array<String>;
 	private var state : StateMachine;
 	private var p : Player;
@@ -20,7 +21,7 @@ class Classmate extends Sprite
 		
 		this.world = world;
 
-		var me = new Image(Root.assets.getTexture(texStr));
+		me = new Image(Root.assets.getTexture(texStr));
 		me.scaleX = 2;
 		me.scaleY = 2;
 		me.smoothing = "none";

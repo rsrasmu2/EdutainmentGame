@@ -205,9 +205,14 @@ class Overworld extends Sprite
 	public function removeClassmate(c:Classmate)
 	{
 		var pos = c.getPosition();
-		map[pos.xPos][pos.yPos] = 0;
+		var x = c.x;
+		var y = c.y;
 		classmates.remove(c);
 		removeChild(c);
+		var Image = c.me;
+		Image.x = x;
+		Image.y = y;
+		addChild(Image);
 	}
 
 	public function allClassmatesBeaten() : Bool
