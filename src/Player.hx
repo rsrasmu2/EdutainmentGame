@@ -46,6 +46,7 @@ class Player extends Sprite
 		currentDir = NONE;
 
 		moving = false;
+		talking = false;
 
 		movieSetUp();
 		addChild(playerFront);
@@ -73,7 +74,7 @@ class Player extends Sprite
 				case Keyboard.LEFT: dirHeld = LEFT; currentDir = LEFT;
 				case Keyboard.RIGHT: dirHeld = RIGHT; currentDir = RIGHT;
 				case Keyboard.ESCAPE: Menu.menu.reset();
-				case Keyboard.ENTER: talking = world.talkToClassmate(this);
+				case Keyboard.ENTER: if(!talking) talking = world.talkToClassmate(this);
 			}
 		});
 		addEventListener(KeyboardEvent.KEY_UP,
@@ -106,7 +107,7 @@ class Player extends Sprite
 				xPos += Overworld.GRID_SIZE;
 			default: return;
 		}
-		
+
 		if(xPos != x || yPos != y) {
 			if (world.goodSpot(xPos,yPos)) {
 				tweenTo(xPos,yPos, d);
@@ -181,7 +182,7 @@ class Player extends Sprite
 		if(health.hitpoints <= 0) Menu.menu.gameOver();
 		else health.text.text = "Health: " + Std.string(health.hitpoints);
 	}
-	
+
 	public function levelUp(healthGain:UInt) {
 		maxHealth += healthGain;
 		health.hitpoints = maxHealth;

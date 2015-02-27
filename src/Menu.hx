@@ -31,7 +31,7 @@ class Menu extends Sprite
 	private var volume : Float;
 
 	private inline static var creditsText =
-	"Temitope Alaga\nJordan Harris\nNancy McCollough\nCherie Parsons\nRobert Rasmussen";
+	"Credits\n---------\nTemitope Alaga\nJordan Harris\nNancy McCollough\nCherie Parsons\nRobert Rasmussen";
 	private inline static var instructionsText =
 	"Instructions\n-----------\nYou are a student that is failing math class. "+
 	"Challenge your classmates to math battles and improve! "+
@@ -68,19 +68,18 @@ class Menu extends Sprite
 		instr.y = Starling.current.stage.stageHeight/2 - instr.height/2;
 
 		cred = new StateMachine(
-			[new StateText(200,100,"Credits\n----------"),
-			new StateText(200,100,creditsText),
-			new StateButton("Back", function(){setMenu(MAIN);},function(){setMenu(MAIN);})]);
+			[new StateText(225,200,creditsText),
+			new StateButton("Back", function(){setMenu(MAIN);},function(){setMenu(MAIN);})],225);
 		cred.y = Starling.current.stage.stageHeight/2 - cred.height/2;
 
 		gameover = new StateMachine(
 			[new StateText(200,100,"Game Over"),
-			new StateButton("Go back to Main Menu", function(){setMenu(MAIN);},function(){setMenu(MAIN);})]);
+			new StateButton("Go back to Main Menu", reset,reset)]);
 		gameover.y = Starling.current.stage.stageHeight/2 - gameover.height/2;
 
 		gameend = new StateMachine(
 			[new StateText(200,100,"You got an A+!"),
-			new StateButton("Go back to Main Menu", function(){setMenu(MAIN);},function(){setMenu(MAIN);})]);
+			new StateButton("Go back to Main Menu", reset,reset)]);
 		gameend.y = Starling.current.stage.stageHeight/2 - gameend.height/2;
 
 		setMenu(MAIN);
@@ -100,32 +99,30 @@ class Menu extends Sprite
 			case CREDITS:
 				current = cred;
 			case OVERWORLD:
-				removeChild(bg);
+				bg.clearBG();
 				gameMusic.play(volume);
 				mainMusic.stop();
 				current = null;
 				addChild(new Overworld(16,16));
 			case GAME_OVER:
-				reset();
 				current = gameover;
 			case GAME_END:
-				reset();
 				current = gameend;
 		}
 		if(current != null) addChild(current);
 	}
 
 	public function gameOver()
-		
+
 	{	setMenu(GAME_OVER);}
 
 	public function endGame()
-		
 	{	setMenu(GAME_END);}
 
 	public function reset()
-	{	
-		addChildAt(bg,0);//setMenu(MAIN);
+	{
+		bg.resetBG();
+		setMenu(MAIN);
 	}
 
 	public function incVol(chn : SoundChannel)

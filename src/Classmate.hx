@@ -12,14 +12,14 @@ class Classmate extends Sprite
 	private var p : Player;
 	private var world : Overworld;
 	public var myTexture: String;
-	
+
 	private function new(s:Array<String>, st:StateMachine, texStr: String, world:Overworld)
 	{
 		super();
 		dialogue = s;
 		p = null;
 		state = st;
-		
+
 		this.world = world;
 
 		myTexture = texStr;
@@ -144,7 +144,7 @@ class BattleMate extends Classmate
 				[new StateText(175,50,"Not until you're stronger!"),
 				new StateButton("Next",endDialogue,endDialogue)],50);
 		}
-		
+
 		world.addChild(state);
 	}
 
@@ -241,11 +241,11 @@ class BattleMate extends Classmate
 		endDialogue();
 		cast(parent, Overworld).removeClassmate(this);
 	}
-	
+
 	public function setNextBattle(bm : BattleMate) {
 		nextBattle = bm;
 	}
-	
+
 	public function enableChallenge() {
 		canChallenge = true;
 		bubbleImage.visible = true;

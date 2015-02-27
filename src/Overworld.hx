@@ -219,5 +219,11 @@ class Overworld extends Sprite
 	}
 
 	public function allClassmatesBeaten() : Bool
-	{	return classmates.length == 2;}
+	{
+		for(mate in classmates)
+		{
+			if(Std.is(mate, BattleMate) && mate != teacher) return false;
+		}
+		return true;
+	}
 }

@@ -59,8 +59,8 @@ COMPLETE:
 - fix math difficulty - Nancy, DONE
 - block player from walking on the front wall - Cherie, DONE
 - Optional: User input is in our bitmap font -Al, Done
-- fix instructions screen so that all instructions show, -Al
-- fix background parallax on menu, -Al
+- fix instructions screen so that all instructions show, -Al, DONE
+- fix background parallax on menu, -Al, DONE
 - different intro text for each person - Nancy, DONE
 - Improve you win screen - add "A+!" or something maybe - Nancy, DONE
 - Optional: loser text "aw, I lost" - Nancy, DONE

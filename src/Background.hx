@@ -24,8 +24,7 @@ class Background extends Sprite
 
 		image1 = new Image(Root.assets.getTexture("bg"));
 		image2 = new Image(Root.assets.getTexture("bg"));
-		addChild(image1);
-		addChild(image2);
+
 
 		image1.scaleX = image1.scaleY = 640/512;
 		image2.scaleX = image2.scaleY = 640/512;
@@ -40,7 +39,7 @@ class Background extends Sprite
 		parallax = .2;
 
 		this.addEventListener(Event.ENTER_FRAME, onEnterFrame);
-
+		resetBG();
 	}
 
 	private function onEnterFrame(event:Event):Void
@@ -58,6 +57,18 @@ class Background extends Sprite
 			image1.x = 0;
 			image2.x = image1.width;
 		}
+	}
+
+	public function clearBG()
+	{
+		removeChild(image1);
+		removeChild(image2);
+	}
+
+	public function resetBG()
+	{
+		addChild(image1);
+		addChild(image2);
 	}
 
 }
