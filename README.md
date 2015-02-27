@@ -22,6 +22,7 @@ TASKS:
 - move dialogue boxes to bottom?
 - You win! Screen once you get your grade to 100% after professor fight
 - Optional: Fix character animation clipping
+- fix background parallax on menu (probably a removeChildren problem?)
 
 COMPLETE:
 ---------
