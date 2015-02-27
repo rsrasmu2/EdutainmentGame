@@ -79,7 +79,7 @@ class Menu extends Sprite
 		gameover.y = Starling.current.stage.stageHeight/2 - gameover.height/2;
 
 		gameend = new StateMachine(
-			[new StateText(200,100,"You have completed the game!!!"),
+			[new StateText(200,100,"You got an A+!"),
 			new StateButton("Go back to Main Menu", function(){setMenu(MAIN);},function(){setMenu(MAIN);})]);
 		gameend.y = Starling.current.stage.stageHeight/2 - gameend.height/2;
 
@@ -106,24 +106,26 @@ class Menu extends Sprite
 				current = null;
 				addChild(new Overworld(16,16));
 			case GAME_OVER:
+				reset();
 				current = gameover;
 			case GAME_END:
+				reset();
 				current = gameend;
 		}
 		if(current != null) addChild(current);
 	}
 
 	public function gameOver()
+		
 	{	setMenu(GAME_OVER);}
 
 	public function endGame()
+		
 	{	setMenu(GAME_END);}
 
 	public function reset()
 	{	
-		//removeChild(
-		addChildAt(bg,0);setMenu(MAIN);
-		
+		addChildAt(bg,0);//setMenu(MAIN);
 	}
 
 	public function incVol(chn : SoundChannel)
