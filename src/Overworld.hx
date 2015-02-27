@@ -123,7 +123,7 @@ class Overworld extends Sprite
 		classmates.push(teacher);
 		addChild(teacher);
 		
-		randomTurn();
+		//randomTurn();
 	}
 
 	private function addMate(xPos: UInt, yPos : UInt, s : Array<String>,
