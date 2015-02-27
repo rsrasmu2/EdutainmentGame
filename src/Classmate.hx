@@ -254,7 +254,7 @@ class Teacher extends BattleMate
 
 	public function new(world : Overworld)
 	{
-		super(["Challenge the teacher?"], PLUS, HARD, "rob_f", 20, false, world);
+		super(["Challenge the teacher?"], PLUS, HARD, "prof", 20, false, world);
 	}
 
 	override private function checkAnswer()

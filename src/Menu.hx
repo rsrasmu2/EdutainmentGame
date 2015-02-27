@@ -2,7 +2,8 @@ import starling.display.*;
 import starling.core.*;
 import StateMachine;
 import flash.media.*;
-import flash.events.*;
+import starling.events.*;
+import starling.textures.Texture;
 
 enum MENU_TYPE
 {
@@ -23,9 +24,11 @@ class Menu extends Sprite
 	private var cred : StateMachine;
 	private var gameover : StateMachine;
 	private var gameend : StateMachine;
+	private var bg:Background;
 
 	private var mainMusic : GameMusic;
 	private var gameMusic : GameMusic;
+	private var volume : Float;
 
 	private inline static var creditsText =
 	"Credits\nTemitope Alaga\nJordan Harris\nNancy McCollough\nCherie Parsons\nRobert Rasmussen";
@@ -41,6 +44,16 @@ class Menu extends Sprite
 	{
 		super();
 		menu = this;
+
+		bg = new Background();
+		addChild(bg);
+		
+		volume = 0.5;
+		mainMusic = new GameMusic("Edutainment",this);
+		gameMusic = new GameMusic("Edutainment2",this);
+		addChild(mainMusic);
+		addChild(gameMusic);
+
 		main = new StateMachine(
 			[new StateText(200,100,"Math RPG"),
 			new StateButton("Play", function(){setMenu(OVERWORLD);}),
@@ -66,19 +79,16 @@ class Menu extends Sprite
 			[new StateText(200,100,"You have completed the game!!!"),
 			new StateButton("Go back to Main Menu", function(){setMenu(MAIN);},function(){setMenu(MAIN);})]);
 
-		mainMusic = new GameMusic("Edutainment");
-		gameMusic = new GameMusic("Edutainment2");
-
 		setMenu(MAIN);
 	}
 
 	private function setMenu(m:MENU_TYPE)
 	{
-		removeChildren();
+		removeChildren(1);
 		switch(m)
 		{
 			case MAIN:
-				mainMusic.play();
+				mainMusic.play(volume);
 				gameMusic.stop();
 				current = main;
 			case INSTRUCTIONS:
@@ -86,10 +96,10 @@ class Menu extends Sprite
 			case CREDITS:
 				current = cred;
 			case OVERWORLD:
-				gameMusic.play();
+				gameMusic.play(volume);
 				mainMusic.stop();
 				current = null;
-				addChild(new Overworld(15,18));
+				addChild(new Overworld(16,16));
 			case GAME_OVER:
 				current = gameover;
 			case GAME_END:
@@ -106,6 +116,20 @@ class Menu extends Sprite
 
 	public function reset()
 	{	setMenu(MAIN);}
+
+	public function incVol(chn : SoundChannel)
+	{
+		volume += 0.1;
+		if(volume > 1.0) volume = 1.0;
+		chn.soundTransform = new SoundTransform(volume);
+	}
+
+	public function decVol(chn : SoundChannel)
+	{
+		volume -= 0.1;
+		if(volume < 0.0) volume = 0.0;
+		chn.soundTransform = new SoundTransform(volume);
+	}
 }
 
 class GameMusic extends Sprite
@@ -113,30 +137,53 @@ class GameMusic extends Sprite
 	private var sound : Sound;
 	private var channel : SoundChannel;
 	private var isPlaying : Bool;
+	private var inc : Button;
+	private var dec : Button;
 
-	public function new(s:String)
+	public function new(s:String,m:Menu)
 	{
 		super();
 		sound = Root.assets.getSound(s);
 		channel = null;
 		isPlaying = false;
+		inc = new Button(Texture.empty(50,50),"+");
+		inc.x = Starling.current.stage.stageWidth - inc.width;
+		inc.y = Starling.current.stage.stageHeight - inc.height;
+		inc.fontName = "Fipps";
+		inc.fontSize = 20;
+		inc.addEventListener(Event.TRIGGERED, function()
+		{
+			m.incVol(channel);
+		});
+		dec = new Button(Texture.empty(50,50),"-");
+		dec.x = inc.x - dec.width;
+		dec.y = inc.y;
+		dec.fontName = "Fipps";
+		dec.fontSize = 20;
+		dec.addEventListener(Event.TRIGGERED, function()
+		{
+			m.decVol(channel);
+		});
 	}
 
-	public function play()
+	public function play(vol : Float)
 	{
 		if(!isPlaying)
 		{
 			channel = sound.play();
+			channel.soundTransform = new SoundTransform(vol);
 			isPlaying = true;
-			if(!channel.hasEventListener(Event.SOUND_COMPLETE))
+			if(!channel.hasEventListener(flash.events.Event.SOUND_COMPLETE))
 			{
-				channel.addEventListener(Event.SOUND_COMPLETE,
-				function(e:Event)
+				channel.addEventListener(flash.events.Event.SOUND_COMPLETE,
+				function(e:flash.events.Event)
 				{
 					isPlaying = false;
-					play();
+					play(vol);
 				});
 			}
+			addChild(inc);
+			addChild(dec);
 		}
 	}
 
@@ -146,6 +193,8 @@ class GameMusic extends Sprite
 		{
 			channel.stop();
 			isPlaying = false;
+			removeChild(inc);
+			removeChild(dec);
 		}
 	}
 }
