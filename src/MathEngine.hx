@@ -15,6 +15,7 @@ enum OPERATION
 	MINUS;
 	MULTIPLY;
 	DIVIDE;
+	ALGEBRA;
 }
 
 typedef MathProblem = {question : String, answer : Int}
@@ -30,6 +31,7 @@ class MathEngine
 			case MINUS: minus(diff);
 			case MULTIPLY: mult(diff);
 			case DIVIDE: divide(diff);
+			case ALGEBRA: algebra(diff);
 		}
 	}
 
@@ -100,5 +102,23 @@ class MathEngine
 		//ensure answer isn't a fraction
 		while ((a % b != 0) || (a == b) || (b > 12)) { b = rand(t); a = rand(t); }
 		return {question : a + " / " + b, answer : Std.int(a/b)};
+	}
+	
+	
+	
+	
+	private static function algebra(diff : DIFFICULTY): MathProblem
+	{
+		var t = switch(diff)
+		{
+			case EASY: {bottom : 1, top : 35};
+			case MEDIUM: {bottom : 4, top : 40};
+			case HARD: {bottom : 6, top : 60};
+		}
+		var a = rand(t);
+		var b = rand(t);
+		var c = rand(t);
+		while (((c - b) % a != 0) || (a == b) || (b == c) || (b > c)) { b = rand(t); a = rand(t); c = rand(t); }
+		return {question : a + "x + " + b + " = " + c, answer : Std.int((c - b) / a)};
 	}
 }

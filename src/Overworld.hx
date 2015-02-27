@@ -1,3 +1,4 @@
+import flash.system.ImageDecodingPolicy;
 import starling.display.*;
 import starling.core.Starling;
 import MathEngine;
@@ -11,6 +12,7 @@ class Overworld extends Sprite
 	private var desks : Array<Image>;
 	private var quad : Quad;
 	private var teacher : Teacher;
+	private var devil : Devil;
 	public inline static var GRID_SIZE = 32;
 
 	public function new(?row:UInt, ?col:UInt)
@@ -22,6 +24,7 @@ class Overworld extends Sprite
 		classRoom.scaleY = col * GRID_SIZE / 266;
 		classRoom.smoothing = "none";
 		addChild(classRoom);
+		
 
 		quad = new Quad(
 			row == null ? Starling.current.stage.stageWidth : row*GRID_SIZE,
@@ -93,9 +96,9 @@ class Overworld extends Sprite
 		"jordan_b");
 
 		//these ones does
-		var ae = addMate(3,11,["I love pink!", "Want to battle?"], "punk_f",PLUS, EASY, 5, true);
-		var am = addMate(3,8,["Can you beat me?", "Want to battle?"], "temi_b",PLUS, MEDIUM, 3, false);
-		var ah = addMate(3,5,["I'm great at addition.", "Want to battle?"], "cherie_f",PLUS, HARD, 1, false);
+		var ae = addMate(3,11,["I love pink!", "Want to battle?"], "punk_f",PLUS, EASY, 5, true);					//5
+		var am = addMate(3,8,["Can you beat me?", "Want to battle?"], "temi_b",PLUS, MEDIUM, 3, false);				//3
+		var ah = addMate(3,5,["I'm great at addition.", "Want to battle?"], "cherie_f",PLUS, HARD, 1, false);		//1
 		cast(ae,BattleMate).setNextBattle(cast(am,BattleMate));
 		cast(am,BattleMate).setNextBattle(cast(ah,BattleMate));
 
@@ -240,6 +243,20 @@ class Overworld extends Sprite
 		{
 			if(Std.is(mate, BattleMate) && mate != teacher) return false;
 		}
+		return true;
+	}
+	
+	public function teacherBeaten() {
+		devil = new Devil(this);
+		devil.setPosition(5, 2);
+		map[5][2] = 1;
+		map[5][3] = 1;
+		classmates.push(devil);
+		addChild(devil);
+	}
+	
+	public function challengeDevil() : Bool
+	{
 		return true;
 	}
 }

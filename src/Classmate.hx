@@ -4,6 +4,8 @@ import StateMachine;
 import MathEngine;
 import starling.display.Image;
 import Math.*;
+import flash.utils.Timer;
+import flash.events.TimerEvent;
 
 class Classmate extends Sprite
 {
@@ -38,6 +40,7 @@ class Classmate extends Sprite
 
 	private function decideMe() {
 		if (myTexture == "prof") { return; }
+		if (myTexture == "MathDevil") { return; }
 		var dirNum = ceil(random() * 3);
 		var dir: String;
 		switch (dirNum) {
@@ -298,7 +301,7 @@ class Teacher extends BattleMate
 
 	public function new(world : Overworld)
 	{
-		super(["Challenge the teacher?"], PLUS, HARD, "prof", 20, false, world);
+		super(["Challenge the teacher?"], PLUS, HARD, "prof", 10, false, world);
 	}
 
 	override private function checkAnswer()
@@ -309,8 +312,13 @@ class Teacher extends BattleMate
 
 		if(result)
 		{
-			if(++curQuestion >= questionNum)
-			{	Menu.menu.endGame();}
+			if (++curQuestion >= questionNum)
+			{
+				state = new StateMachine(
+				[new StateText(150,100,
+				"You got all my questions right!"),
+				new StateButton("Exit", endPlayer, endPlayer)], 100);								///Change This//////////
+			}
 			else
 			{
 				ques = MathEngine.generateProblem(randomOP(),HARD);
@@ -350,6 +358,96 @@ class Teacher extends BattleMate
 	{
 		world.removeChild(state);
 		state = new StateMachine((world.allClassmatesBeaten() ?
+		[new StateText(175,50,"Are you sure?"),
+		new StateButton("Yes",startBattle,endDialogue),
+		new StateButton("No", endDialogue, endDialogue)] :
+		[new StateText(200,50,"You must beat all the students before challenging me!"),
+		new StateButton("Next",endDialogue,endDialogue)])
+		,50);
+		world.addChild(state);
+	}
+
+	override private function startBattle()
+	{
+		world.removeChild(state);
+		ques = MathEngine.generateProblem(randomOP(),HARD);
+		state = new StateMachine(
+			[new StateText(125,50,ques.question),
+			new StateInput(),
+			new StateButton("Answer",checkAnswer,checkAnswer)],
+			50);
+		world.addChild(state);
+	}
+	
+	override private function endPlayer()
+	{
+		p.levelUp(20);
+		endDialogue();
+		cast(parent, Overworld).removeClassmate(this);
+	}
+	
+	override private function endDialogue()
+	{
+		world.removeChild(state);
+		p.stopTalking();
+		p = null;
+		world.teacherBeaten();
+		resetDialogue();
+	}
+}
+
+
+class Devil extends BattleMate
+{
+
+	public function new(world : Overworld)
+	{
+		super(["Think You can beat the Devil?"], ALGEBRA, EASY, "MathDevil", 10, false, world);
+	}
+
+	override private function checkAnswer()
+	{
+		var ans = state.getAnswer();
+		world.removeChild(state);
+		var result = ques.answer == ans;
+
+		if(result)
+		{
+			if(++curQuestion >= questionNum)
+			{	Menu.menu.endGame();}
+			else
+			{
+				ques = MathEngine.generateProblem(randomOP(),EASY);
+				state = new StateMachine(
+				[new StateText(150,100, "Correct. Next question."),
+				new StateText(125,100,ques.question),
+				new StateInput(),
+				new StateButton("Answer",checkAnswer,checkAnswer)],
+				50);
+			}
+		}
+		else
+		{
+			state = new StateMachine(
+				[new StateText(150,100, "Wrong. Try again..."),
+				new StateText(125,100,ques.question),
+				new StateInput(),
+				new StateButton("Answer",checkAnswer,checkAnswer)],
+				50);
+			p.takeDamage(30);
+		}
+		world.addChild(state);
+	}
+
+	private function randomOP() : OPERATION
+	{
+		return ALGEBRA;
+	}
+
+	override private function battle()
+	{
+		world.removeChild(state);
+		state = new StateMachine((world.challengeDevil() ?
 		[new StateText(175,50,"Are you sure?"),
 		new StateButton("Yes",startBattle,endDialogue),
 		new StateButton("No", endDialogue, endDialogue)] :

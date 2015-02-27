@@ -78,7 +78,7 @@ class Menu extends Sprite
 		gameover.y = Starling.current.stage.stageHeight/2 - gameover.height/2;
 
 		gameend = new StateMachine(
-			[new StateText(200,100,"You got an A+!"),
+			[new StateText(200,100,"You are a Math God!"),
 			new StateButton("Go back to Main Menu", reset,reset)]);
 		gameend.y = Starling.current.stage.stageHeight/2 - gameend.height/2;
 

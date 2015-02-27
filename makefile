@@ -1,4 +1,4 @@
-FLEX_SDK ?= C:\Users\Nancy\Documents\ApacheFlex
+FLEX_SDK ?= C:/flexsdk
 
 APP=edutainment
 APP_XML=$(APP).xml
