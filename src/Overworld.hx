@@ -31,8 +31,6 @@ class Overworld extends Sprite
 
 		//createGrid(quad);
 		createMap();
-
-		addDesks();
 		addMates();
 
 		//block off front of the room
@@ -83,6 +81,7 @@ class Overworld extends Sprite
 	private function addMates()
 	{
 		classmates = new Array();
+		desks = new Array();
 
 		//this mate doesn't battle
 		/*addMate(3,5,["Welcome to Math RPG!",
@@ -91,47 +90,35 @@ class Overworld extends Sprite
 		"jordan_b");*/
 
 		//these ones does
-		var ae = addMate(3,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, EASY, 5, true);
-		var am = addMate(8,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, MEDIUM, 3, false);
-		var ah = addMate(11,15,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, HARD, 1, false);
+		var ae = addMate(3,12,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, EASY, 5, true);
+		var am = addMate(3,8,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, MEDIUM, 3, false);
+		var ah = addMate(3,5,["Can you beat me?", "Want to battle?"], "cherie_f",PLUS, HARD, 1, false);
 		cast(ae,BattleMate).setNextBattle(cast(am,BattleMate));
 		cast(am,BattleMate).setNextBattle(cast(ah,BattleMate));
 
-		var se = addMate(3,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, EASY, 5, true);
-		var sm = addMate(8,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, MEDIUM, 3, false);
-		var sh = addMate(11,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, HARD, 1, false);
+		var se = addMate(6,12,["My skills are good", "Want to battle?"], "nancy_l",MINUS, EASY, 5, true);
+		var sm = addMate(6,8,["My skills are good", "Want to battle?"], "nancy_l",MINUS, MEDIUM, 3, false);
+		var sh = addMate(6,5,["My skills are good", "Want to battle?"], "nancy_l",MINUS, HARD, 1, false);
 		cast(se,BattleMate).setNextBattle(cast(sm,BattleMate));
 		cast(sm,BattleMate).setNextBattle(cast(sh,BattleMate));
 
-		var me = addMate(3,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, EASY, 5, true);
-		var mm = addMate(8,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, MEDIUM, 3, false);
-		var mh = addMate(11,7,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, HARD, 1, false);
+		var me = addMate(10,12,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, EASY, 5, true);
+		var mm = addMate(10,8,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, MEDIUM, 3, false);
+		var mh = addMate(10,5,["Think you're smarter?", "Want to battle?"], "temi_f", MULTIPLY, HARD, 1, false);
 		cast(me,BattleMate).setNextBattle(cast(mm,BattleMate));
 		cast(mm,BattleMate).setNextBattle(cast(mh,BattleMate));
 
-		var de = addMate(3,3,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, EASY, 5, true);
-		var dm = addMate(8,3,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, MEDIUM, 3, false);
-		var dh = addMate(11,3,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, HARD, 1, false);
+		var de = addMate(13,12,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, EASY, 5, true);
+		var dm = addMate(13,8,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, MEDIUM, 3, false);
+		var dh = addMate(13,5,["Come at me bro!", "Want to battle?"], "rob_r", DIVIDE, HARD, 1, false);
 		cast(de,BattleMate).setNextBattle(cast(dm,BattleMate));
 		cast(dm,BattleMate).setNextBattle(cast(dh,BattleMate));
 
 		var teacher = new Teacher(this);
-		teacher.setPosition(14, 3);
-		map[14][3] = 1;
+		teacher.setPosition(8, 2);
+		map[8][2] = 1;
 		classmates.push(teacher);
 		addChild(teacher);
-	}
-
-	private function addDesks() {
-		desks = new Array();
-
-		// all desks
-		addDesk(3, 4, "desk_1");
-		addDesk(8, 4, "desk_2");
-		addDesk(12, 4, "desk_1");
-		addDesk(3, 8, "desk_1");
-		addDesk(8, 8, "desk_2");
-		addDesk(12, 8, "desk_2");
 	}
 
 	private function addMate(xPos: UInt, yPos : UInt, s : Array<String>,
@@ -143,6 +130,11 @@ class Overworld extends Sprite
 		mate.setPosition(xPos,yPos);
 		map[xPos][yPos] = 1;
 		classmates.push(mate);
+		if (Std.random(2) == 1) {
+			addDesk(xPos, yPos - 1, "desk_1");
+		} else {
+			addDesk(xPos, yPos - 1, "desk_2");
+		}
 		addChild(mate);
 		return mate;
 	}
