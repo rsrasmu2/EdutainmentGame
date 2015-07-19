@@ -2,6 +2,8 @@ Please claim things that you're working on!
 
 CONCEPT OVERVIEW:
 --------
+
+[![Join the chat at https://gitter.im/RobRas/EdutainmentGame](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/RobRas/EdutainmentGame?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 - "battle arena": opponent, player, math question in the middle, text box to answer question, time limit bar
 - grade = score, as you correctly answer your opponents grade goes down until they have a 0
 - in battles, player can choose what type of math they are solving in a menu at bottom (+, -, *, /)
